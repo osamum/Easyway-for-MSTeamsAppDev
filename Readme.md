@@ -23,7 +23,9 @@
 
 * **Microsoft Teams 管理センターでサイドローディングの許可**
 
-    開発したアプリケーションサイドローディングを許可を行ってください。具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[Teams のアプリ\] - \[[セットアップ ポリシー](https://admin.teams.microsoft.com/policies/app-setup/edit/)\] で 「カスタム アプリのアップロードを許可」をオンにします。
+    Microsoft Teams 管理センターにて、開発したアプリケーションがサイドローディングできるように許可を行ってください。
+    
+    具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[Teams のアプリ\] - \[[セットアップ ポリシー](https://admin.teams.microsoft.com/policies/app-setup/edit/)\] で 「カスタム アプリのアップロードを許可」をオンにします。
 
     <img src="images/SetupPolicy.png" width="400">
 
@@ -43,7 +45,7 @@
     ローカル環境で動作させた開発中のアプリケーションをインターネットを介して一時的にアクセスできるようにするために使用します。
 
 
-## チュートリアル
+## 目次
 1. [**Microsoft Teams アプリケーション開発について**](Tut01.md)
 2. [**Microsoft Teams アプリケーションの新規作成**](Tut02.md)
     * App Studio を使用したマニフェストファイルの作成
@@ -55,4 +57,4 @@
     * ボットの登録
     * Teams Bot Builder SDK を使用した拡張
 5. [**メッセージ拡張とメッセージアクション**](Tut05.md)
-6. [**コネクタ**](Tut06.md))
+6. [**コネクタ**](Tut06.md)

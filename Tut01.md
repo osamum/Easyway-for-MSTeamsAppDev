@@ -13,9 +13,9 @@ Microsoft Teams はアプリケーションとしてでなく、サードパー�
 
 このプラットフォームには 3 つの大きな特徴があります。
 
-* シームレスなコンテキストの切り替え
-* 場所に制限されないコミュニケーション
-* エクスペリエンス (体験) の多様性
+* **シームレスなコンテキストの切り替え**
+* **場所に制限されないコミュニケーション**
+* **エクスペリエンス (体験) の多様性**
 
 ### シームレスなコンテキストの切り替え
 Microsoft Teams ではコンテキストを切り替えることなく、さまざまに異なるコンテキストを取得することができます。
@@ -53,11 +53,11 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
 ## Microsoft Teams の SDK と API
 既存の Web アプリケーションやボットを Microsoft Teams 用に拡張するために以下のような SDK が用意されています。
 
-* Web クライアント (タブ アプリケーションむけ)
+* **Web クライアント (タブ アプリケーションむけ)**
 
     [Microsoft Teams JavaScript client SDK](https://docs.microsoft.com/en-us/javascript/api/overview/msteams-client)
 
-* ボット
+* **ボット**
 
     Bot Builder SDK 4 - Microsoft Teams Extensions
 
