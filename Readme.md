@@ -1,0 +1,47 @@
+# Microsoft Teams 開発社向け簡易チュートリアル
+## 概要
+このチュートリアルは Microsoft Teams 開発初学者向けに Microsoft Teams の以下の機能を利用した開発について簡易的なチュートリアルを提供するものです。 
+
+## 要件
+このチュートリアルを実施するには以下の環境が必要です。
+
+* **Microsoft Office 365 Business Premium 以上の[ライセンス](https://products.office.com/ja-JP/compare-all-microsoft-office-products-b?tab=2)**
+
+    ライセンスを持っていない開発者は [Office 365 開発者プログラム](https://developer.microsoft.com/ja-JP/office/dev-program
+)に参加して開発者用の無料の Office 365 のサブスクリプションを入手することもできます。このサブスクリプションでは [Office 365 Enterprise E3 Developer](https://docs.microsoft.com/ja-jp/office/developer-program/office-365-developer-program-get-started) が 1 年間無償で使用することができます。
+
+* Microsoft Teams 管理センターでサイドローディングの許可
+
+    開発したアプリケーションサイドローディングを許可を行ってください。具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[Teams のアプリ\] - \[[セットアップ ポリシー](https://admin.teams.microsoft.com/policies/app-setup/edit/)\] で 「カスタム アプリのアップロードを許可」をオンにします。
+
+    <img src="images/SetupPolicy.png" width="400">
+
+
+* **[Visual Studio 2018 以上のエディション](https://visualstudio.microsoft.com/ja/vs/)、もしくは [Visual Studio Code](https://code.visualstudio.com/Download)**
+
+    ボットとメッセージ拡張の開発のチュートリアルで使用します。
+
+    ボットを C# で開発する場合は Visual Studio 201x を JavaScript で開発する場合は Visual Studio Code と [Node.js](https://nodejs.org/en/) をが必要です。
+
+* **デスクトップ版 Microsoft Teams**
+
+    アプリケーションの登録を行うにはデスクトップ版の Microsoft Teams が必要です。[Office 365 ポータル](https://www.office.com/?)からインストールしておいてください。
+
+* **[ngrok](https://ngrok.com/download)**
+
+    ローカル環境で動作させた開発中のアプリケーションをインターネットを介して一時的にアクセスできるようにするために使用します。
+
+
+## チュートリアル
+1. [**Microsoft Teams アプリケーション開発について**](Tut01.md)
+2. [**Microsoft Teams アプリケーションの新規作成**](Tut02.md)
+    * App Studio を使用したマニフェストファイルの作成
+3. [**タブ アプリケーション**](Tut03.md)
+    * パーソナル タブ
+    * チーム タブ
+    * タブ アプリケーションのシングルサインオン
+4. [**ボット**](Tut04.md)
+    * ボットの登録
+    * Teams Bot Builder SDK を使用した拡張
+5. [**メッセージ拡張とメッセージアクション**](Tut05.md)
+6. [**コネクタ**](Tut06.md))
