@@ -1,6 +1,17 @@
 # Microsoft Teams 開発社向け簡易チュートリアル
 ## 概要
-このチュートリアルは Microsoft Teams 開発初学者向けに Microsoft Teams の以下の機能を利用した開発について簡易的なチュートリアルを提供するものです。 
+このチュートリアルは、これから Microsoft Teams 向けのアプリケーションの開発を行う初学者のための簡易的なものであり、実際の開発に取り掛かるまでの学習期間の短縮を目的としています。
+
+ここで紹介するのは以下の内容です。
+* 開発で使用する Microsoft Teams の特徴的なリソース
+* 上記それぞれの概念
+* 上記それぞれのアプリケーションの実装方法
+
+チュートリアルとして開発方法を説明するのは Microsoft Teams の以下の機能です。
+* タブ
+* ボット
+* コネクタ
+* メッセージ拡張
 
 ## 要件
 このチュートリアルを実施するには以下の環境が必要です。
@@ -10,7 +21,7 @@
     ライセンスを持っていない開発者は [Office 365 開発者プログラム](https://developer.microsoft.com/ja-JP/office/dev-program
 )に参加して開発者用の無料の Office 365 のサブスクリプションを入手することもできます。このサブスクリプションでは [Office 365 Enterprise E3 Developer](https://docs.microsoft.com/ja-jp/office/developer-program/office-365-developer-program-get-started) が 1 年間無償で使用することができます。
 
-* Microsoft Teams 管理センターでサイドローディングの許可
+* **Microsoft Teams 管理センターでサイドローディングの許可**
 
     開発したアプリケーションサイドローディングを許可を行ってください。具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[Teams のアプリ\] - \[[セットアップ ポリシー](https://admin.teams.microsoft.com/policies/app-setup/edit/)\] で 「カスタム アプリのアップロードを許可」をオンにします。
 
