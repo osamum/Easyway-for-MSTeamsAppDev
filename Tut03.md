@@ -155,6 +155,7 @@ Microsoft Teams にパーソナル タブとして表示する Web ページを�
     http://127.0.0.1:8080/index.html
     ```
     以下の内容が表示されることを確認してください。
+    
     <img src="images/tabSample-browser.png" width="400px">
 
     Teams のタブでロードされていないので、ユーザーの情報がロードされていません。
