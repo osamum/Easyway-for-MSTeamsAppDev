@@ -14,7 +14,7 @@ Microsoft Teams アプリケーションは、既存の Web アプリケーシ�
 
 なお、手動によるマニフェストファイルの作成と Microsoft Teams の展開方法については以下のドキュメントをご覧ください。
 
-* [**Web パーツ用の Microsoft Teams マニフェストを手動で作成して Microsoft Teams に展開する**](https://docs.microsoft.com/ja-jp/sharepoint/dev/spfx/web-parts/guidance/creating-team-manifest-manually-for-webpart)
+* [**Reference: Manifest schema for Microsoft Teams**](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema)
 
 ## App Studio について
 App Studio は Microsoft Teams のアプリケーションで、アプリマニフェストを含むアプリ パッケージの作成を GUI で行うためのツールです。
@@ -34,10 +34,93 @@ App Studio は既定の状態では Microsoft Teams にインストールされ�
 App Studio のインストール手順は以下のとおりです。
 
 1. Microsoft Teams 起動します。
-2. 左側のメニューバーの下から 2 番目にあめメニュー \[アプリ\] をクリックします。
+2. 左側のメニューバーの下から 2 番目にあるメニュー \[アプリ\] をクリックします。
 3. Microsoft Teams にインストールすることのできるアプリの一覧画面が表示されるので、その中から選択するか、同画面の左上の \[すべてを検索] ボックスで検索を行います。
 4. App Studio のタイルをクリックし、\[チームに追加] ボタンをクリックしてインストールします。 
 
 ## App Studio を使用した Teams アプリケーションの登録
+ここでは App Studio を使用して、演習として **My first App** というアプリを登録します。
+
+App Studio でアプリの登録を行うには以下の手順を実行します。
+
+1. Microsoft Teams の左端のメニュー \[・・・]\(「さらに追加されたアプリ」) をクリックし、App Studio を選択
+2. App Studio の画面に切り替わるので、同画面の上部メニュー \[Manifest editor] をクリック
+3. 「Welcome」と書かれたボックスの中の \[Create a new app] ボタンをクリック
+4. Manifest Editor の画面が表示されるので、App detail 内の項目を以下のように設定します。
+
+    なお * のついている項目は必須項目です。
+
+    ### **App Names**
+    
+    アプリの名前を指定します。\[Short name](30 文字以下) の指定が必須です。
+    |項目|値|
+    |---- | ---- |
+    |*Short name|My first app|
+    |Long Name|My first application for Microsoft Teams|
 
 
+    ### **Identification**
+
+    \[App ID] にはアプリの ID を指定します。ID はユニークな GUID である必要があります。
+
+    \[Package Name] には逆引きドメイン表記でこのアプリケーションの一意の識別子を指定します。たとえば、com.example.myapp です。
+    |項目|値|
+    | ---- | ---- |
+    |*App ID|\[Generate] ボタンをクリックして生成|
+    |*Package Name|com.example.myfirstapp|
+    |*Varsion|1.0.0|
+
+    ### **Descriptions**
+    アプリの \[Short description]\(短い説明) と\[Long description]|\(長い説明) の両方を含めます。短い説明は 80 文字以下で、長い説明と同じものを指定することはできません。
+    |項目|値|
+    | ---- | ---- |
+    |*Short description|My first Application|
+    |*Long description|My first application in Microsoft Teams easy tutorial|
+
+    ### **Developer information**
+    \[Name] と \[Web Site] を入力します。Web サイトが有効な https URL であることを確認します。
+    |項目|値|
+    | ---- | ---- |
+    |*Name|Tutrial Developer|
+    |*Web Site|https://exsample.com|
+
+    ### **Partner information**
+    必要に応じて、アプリを構築するパートナー組織の Microsoft パートナー ネットワーク ID を提供します。
+    |項目|値|
+    | ---- | ---- |
+    |MPN ID|規定値のまま|
+
+    ### **App URLs**
+    プライバシーに関する声明および利用規約へのリンクを提供します。
+    |項目|値|
+    | ---- | ---- |
+    |*Privacy statement|https://exsample.com/privacy|
+    |*Terms of use|https://exsample.com/termofuse|
+
+    ### **Branding** ###
+    1 つのフルカラー アイコン (192x192) と 1 つの透明なアウトライン (32x32) をアップロードします。両方のアイコンの形式は PNG である必要があります。
+    |項目|値|
+    | ---- | ---- |
+    |*Full color<br>192x192|今回は指定しません|
+    |*Transparent outline<br>32x32|今回は指定しません|
+    |Accent color|今回は指定しません|
+
+5. 画面左上の \[Home] メニューをクリックします。
+
+App Studio の Recently created apps リストに登録したアプリケーション My first app のタイルがあることを確認してください。
+
+移行の手順でアプリの実際の機能 (Capability) を登録していきます。
+
+## 目次
+1. [**Microsoft Teams アプリケーション開発について**](Tut01.md)
+2. [**Microsoft Teams アプリケーションの新規作成**](Tut02.md)
+    * App Studio を使用したマニフェストファイルの作成
+3. [**タブ アプリケーション**](Tut03.md)
+    * パーソナル タブ
+    * チーム タブ
+    * タブ アプリケーションのシングルサインオン
+4. [**ボット**](Tut04.md)
+    * ボットの登録
+    * Teams Bot Builder SDK を使用した拡張
+5. [**メッセージ拡張とメッセージアクション**](Tut05.md)
+6. [**コネクタ**](Tut06.md))
