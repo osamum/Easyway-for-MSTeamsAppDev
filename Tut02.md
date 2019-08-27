@@ -1,4 +1,4 @@
-# Microsoft Teams アプリケーションの新規作成
+# 演習 1 : Microsoft Teams アプリケーションの新規作成
 Microsoft Teams アプリケーションは、既存の Web アプリケーションや既存の Microsoft Bot Framework で作られたボットを統合するか、それぞれ向けに作られた Teams 用の SDK で拡張して行います。
 
 これらを Teams にアプリケーションとして登録する場合で必要となるのがアプリの定義です。
