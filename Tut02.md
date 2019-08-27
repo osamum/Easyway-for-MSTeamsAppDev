@@ -52,11 +52,8 @@ App Studio でアプリの登録を行うには以下の手順を実行します
 
     ### **App Names**
 
-    |項目|値|
-    |---|---|
-    |A|B|
-    
     アプリの名前を指定します。\[Short name](30 文字以下) の指定が必須です。
+
     |項目|値|
     |---|---|
     | *Short name | My first app |
@@ -67,6 +64,7 @@ App Studio でアプリの登録を行うには以下の手順を実行します
     \[App ID] にはアプリの ID を指定します。ID はユニークな GUID である必要があります。
 
     \[Package Name] には逆引きドメイン表記でこのアプリケーションの一意の識別子を指定します。たとえば、com.example.myapp です。
+
     |項目|値|
     | ---- | ---- |
     |*App ID|\[Generate] ボタンをクリックして生成|
@@ -75,6 +73,7 @@ App Studio でアプリの登録を行うには以下の手順を実行します
 
     ### **Descriptions**
     アプリの \[Short description]\(短い説明) と\[Long description]|\(長い説明) の両方を含めます。短い説明は 80 文字以下で、長い説明と同じものを指定することはできません。
+
     |項目|値|
     | ---- | ---- |
     |*Short description|My first Application|
@@ -82,6 +81,7 @@ App Studio でアプリの登録を行うには以下の手順を実行します
 
     ### **Developer information**
     \[Name] と \[Web Site] を入力します。Web サイトが有効な https URL であることを確認します。
+
     |項目|値|
     | ---- | ---- |
     |*Name|Tutrial Developer|
@@ -89,12 +89,14 @@ App Studio でアプリの登録を行うには以下の手順を実行します
 
     ### **Partner information**
     必要に応じて、アプリを構築するパートナー組織の Microsoft パートナー ネットワーク ID を提供します。
+
     |項目|値|
     | ---- | ---- |
     |MPN ID|規定値のまま|
 
     ### **App URLs**
     プライバシーに関する声明および利用規約へのリンクを提供します。
+
     |項目|値|
     | ---- | ---- |
     |*Privacy statement|https://exsample.com/privacy|
@@ -102,6 +104,7 @@ App Studio でアプリの登録を行うには以下の手順を実行します
 
     ### **Branding** ###
     1 つのフルカラー アイコン (192x192) と 1 つの透明なアウトライン (32x32) をアップロードします。両方のアイコンの形式は PNG である必要があります。
+    
     |項目|値|
     | ---- | ---- |
     |*Full color<br>192x192|今回は指定しません|
