@@ -48,7 +48,7 @@
 ## 目次
 1. [**Microsoft Teams アプリケーション開発について**](Tut01.md)
 2. [**Microsoft Teams アプリケーションの新規作成**](Tut02.md)
-    * App Studio を使用したマニフェストファイルの作成
+    * [App Studio を使用したマニフェストファイルの作成](Tut02.md#app-studio-を使用した-teams-アプリケーションの登録)
 3. [**タブ アプリケーション**](Tut03.md)
     * パーソナル タブ
     * チーム タブ
