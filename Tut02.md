@@ -60,8 +60,8 @@ App Studio でアプリの登録を行うには以下の手順を実行します
     ### **App Names**
     
     アプリの名前を指定します。\[Short name](30 文字以下) の指定が必須です。
-    | 項目 | 値 |
-    | ---- | ---- |
+    |項目|値|
+    |-------|-------|
     | *Short name | My first app |
     | Long Name | My first application for Microsoft Teams |
 
