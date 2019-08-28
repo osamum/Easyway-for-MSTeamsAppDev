@@ -14,7 +14,7 @@ Microsoft Teams のタブには以下の 2 種類のタブがあります。
 
 * **構成可能タブ**
 
-    タブはチャネルの一部になり、単一の種類の情報をチームに提供します。構成可能タブには、コンテンツページに加えて構成ページがあります。
+    チャネル単位のスコープのタブです。静的タブがユーザーごと利用であるのに対し、構成可能タブはチャネルの一部になり、チャネルを参照可能なチームのメンバーにおなじ情報を提供します。構成可能タブには、コンテンツページに加えて構成ページがあります。
 
 ## タブのスコープ
 Microsoft Teams は、そのスコープに基づいてタブを使用できる場所を決定します。スコープはアプリ マニフェストで設定され、次の値のいずれかになります。
@@ -24,10 +24,10 @@ Microsoft Teams は、そのスコープに基づいてタブを使用できる�
 
     チャネルの一部として、チームのメンバーから共有されます。
 
-    現在、チャネル内のすべてのタブは構成可能なタブです。ユーザーがタブを最初にチャネルに追加するときに、タブエクスペリエンスのコンテンツを構成します。
+    現在、チャネル内のすべてのタブは構成可能タブです。ユーザーがタブを最初にチャネルに追加するときに、タブエクスペリエンスのコンテンツを構成します。
 * **グループ チャット (groupchat)**
 
-    構成可能なタブはグループチャットでも使用できます。これらは、2人以上のユーザー間の会話です。
+    構成可能タブはグループチャットでも使用できます。これらは、2人以上のユーザー間の会話です。
 
 * **パーソナル (personal)**
 
@@ -53,7 +53,7 @@ Microsoft Teams には Web ページをタブとして追加できますが、�
     Microsoft Teams クライアントは、タブの読み込み時または通信時に、アプリ マニフェストの静的 [validDomains](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema#validdomains) リストに対してオリジンを検証する必要があるため、[クロスドメイン ナビゲーション](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/tabs/cross-domain)を異なる方法で処理します。
 
 
-## パーソナル (静的) タブの追加
+## タスク 1 : パーソナル (静的) タブの追加
 パーソナル タブは個々のユーザーをサポートしています。追加したタブを第三者に公開することなく自分だけで使用することができます。
 
 このチュートリアルでは静的な Web ページで [Microsoft Teams JavaScript client SDK](https://docs.microsoft.com/en-us/javascript/api/overview/msteams-client?view=msteams-client-js-latest) を使用して現在のユーザーの簡易的な情報を表示するページ作成し、パーソナル タブとして追加します。
@@ -109,6 +109,8 @@ Microsoft Teams にパーソナル タブとして表示する Web ページを�
     <script src="https://unpkg.com/@microsoft/teams-js@1.3.4/dist/MicrosoftTeams.min.js" integrity="sha384-3zTjxw3msc6gKx3DseSU0lfRM129YrFjr2xgocfMIN/kBCdzJ88d+FSB1n3scUku" crossorigin="anonymous"></script>
     <script>
         let $id = (id) => { return document.getElementById(id); }
+        /*ここに演習 2 のタスク 2 でコードを追加*/
+
         //microsoftTeams クラスの初期化
         microsoftTeams.initialize();
       
@@ -155,7 +157,7 @@ Microsoft Teams にパーソナル タブとして表示する Web ページを�
     http://127.0.0.1:8080/index.html
     ```
     以下の内容が表示されることを確認してください。
-    
+
     <img src="images/tabSample-browser.png" width="400px">
 
     Teams のタブでロードされていないので、ユーザーの情報がロードされていません。
@@ -223,6 +225,11 @@ Teams 内にタブとして作成した Web ページが表示され、現在 Te
 \<参考>
 
 * [**Get context for your Microsoft Teams tab**](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/tabs/tabs-context)
+
+## チーム (構成可能) タブの追加
+ローカル環境でホストされている Web コンテンツを Microsoft Teams にチーム タブとして追加します。
+
+
 
 
 ## 目次

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Team Tab Config.</title>
+    <!-- Microsoft Teams JavaScript API (via CDN) -->
+    <script src="https://statics.teams.microsoft.com/sdk/v1.4.2/js/MicrosoftTeams.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Microsoft Teams チーム タブ<br>設定ページ サンプル</h1>
+
+    タブの背景色 : 
+    <!--タブとして追加されるページの背景色を指定-->
+    <select id="colorSelector" >
+        <option value="white" >白</option>
+        <option value="gainsboro">灰</option>
+        <option value="skyblue">青</option>
+        <option value="yellow">黄</option>
+    </select>
+    <script>
+        let colorName = '';
+        try {
+            microsoftTeams.initialize();
+            microsoftTeams.settings.registerOnSaveHandler(function (saveEvent) {
+                microsoftTeams.settings.setSettings({
+                    entityId: 'myteamtab',
+                    contentUrl: 'https://75fdc1a5.ngrok.io/index.html' + colorName,
+                    suggestedDisplayName: 'My first Team Tab',
+                    websiteUrl: '',
+                    removeUrl: 'https://75fdc1a5.ngrok.io/index.html',
+                });
+                saveEvent.notifySuccess();
+            });
+        } catch (exp) {
+            display.innerText = exp.toString();
+        }
+        microsoftTeams.settings.setValidityState(true);
+
+        document.getElementById('colorSelector').addEventListener('change',(evnt)=>{
+            colorName = '?' + evnt.target.value;
+        });
+    </script>
+</body>
+</html>

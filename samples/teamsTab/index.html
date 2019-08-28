@@ -8,7 +8,6 @@
             font-weight: bold;
             font-size: 20px;
         }
-
         .context-data {
             color: blue;
         }
@@ -22,6 +21,13 @@
         crossorigin="anonymous"></script>
     <script>
         let $id = (id) => { return document.getElementById(id); }
+        
+        /*ここに演習 2 のタスク 2 でコードを追加*/
+        // URL に付加された色名から背景色を設定
+        ((qString)=>{
+            document.body.style.backgroundColor = (qString)? (qString.substr(1,qString.length -1)):''; 
+        })(window.location.search);
+        
         //microsoftTeams クラスの初期化
         microsoftTeams.initialize();
 
@@ -36,6 +42,7 @@
             });
         })
 
+        
     </script>
 
     <h1>Microsoft Teams Tab App サンプル</h1>
