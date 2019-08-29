@@ -228,7 +228,7 @@ Teams 内にタブとして作成した Web ページが表示され、現在 Te
 
 * [**Get context for your Microsoft Teams tab**](https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/tabs/tabs-context)
 
-## チーム (構成可能) タブの追加
+## タスク 2 : チーム (構成可能) タブの追加
 ローカル環境でホストされている Web コンテンツを Microsoft Teams にチーム タブとして追加します。
 
 パーソナル タブの追加方法とは異なり、タブとして追加される Web ページ以外に設定 (構成) 用のページを作り、その中から Microsoft Teams JavaScript client SDK の [microsoftTeams.settings.setSettings メソッド](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/microsoftteams.settings?view=msteams-client-js-latest#setsettings-settings-) を使用して登録を行います。

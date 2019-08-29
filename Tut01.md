@@ -85,8 +85,8 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
 2. [**Microsoft Teams アプリケーションの新規作成**](Tut02.md)
     * [App Studio を使用したマニフェストファイルの作成](Tut02.md#app-studio-を使用した-teams-アプリケーションの登録)
 3. [**タブ アプリケーション**](Tut03.md)
-    * パーソナル タブ
-    * チーム タブ
+    * [パーソナル タブ](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/master/Tut03.md#タスク-1--パーソナル-静的-タブの追加)
+    * [チーム タブ](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/master/Tut03.md#チーム-構成可能-タブの追加)
     * タブ アプリケーションのシングルサインオン
 4. [**ボット**](Tut04.md)
     * ボットの登録
