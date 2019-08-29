@@ -186,9 +186,11 @@ Microsoft Teams にパーソナル タブとして表示する Web ページを�
 
     https://9fcf38b6.engrok.io/index.html
 
-    ローカル アドレスでアクセスしたさいと同じコンテンツが表示されることを確認してください。
+    ローカル アドレスでアクセスしたときと同じコンテンツが表示されることを確認してください。
 
-ここまでの手順で、作成した Web ページに Microsoft Teams からアクセスできるようになのました。
+    **なお、engrok は終了すると、次回起動したときにドメイン名が変わってしまうので注意してください。**
+
+ここまでの手順で、作成した Web ページに Microsoft Teams からアクセスできるようになりました。
 
 ### Teams パーソナルタブとして追加
 ローカル環境でホストされている Web コンテンツを Microsoft Teams にパーソナル タブとして追加します。
@@ -229,7 +231,169 @@ Teams 内にタブとして作成した Web ページが表示され、現在 Te
 ## チーム (構成可能) タブの追加
 ローカル環境でホストされている Web コンテンツを Microsoft Teams にチーム タブとして追加します。
 
+パーソナル タブの追加方法とは異なり、タブとして追加される Web ページ以外に設定 (構成) 用のページを作り、その中から Microsoft Teams JavaScript client SDK の [microsoftTeams.settings.setSettings メソッド](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/microsoftteams.settings?view=msteams-client-js-latest#setsettings-settings-) を使用して登録を行います。
 
+なお、以降の手順はタスク 1 でパーソナル タブ用として作成した Web ページを使用しますので、作成していない場合はタスク 1 の内容を参考に作成しておいてください。
+
+### チームタブ 設定ページの作成
+Microsoft Teams にチーム タブを追加する際に表示される設定ダイアログボックス用の Web ページを作成します。
+
+なお、App Studio でのチーム タブの登録に使用するのは、この設定ページの URL です。
+
+手順は以下のとおりです。
+
+1. タスク 1 で作成したパーソナル タブ用の Web ページのフォルダを Visual Studio Code でオープンします。
+
+2. Visual Studio Code のメニュー [File] - [New File] クリックします。
+
+3. メニュー [File] - [Save As...] クリックし、ファイルを config.html という名前で保存します。(※ファイルを保存する際、保存ダイアログボックスで \[ファイルの種類] を HTML を指定するようにしてください )
+
+4. Visual Studio Code で開かれている config.html に以下の内容をコピーして貼り付けます。
+
+    ```
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Team Tab Config.</title>
+        <!-- Microsoft Teams JavaScript API (via CDN) -->
+        <script src="https://statics.teams.microsoft.com/sdk/v1.4.2/js/MicrosoftTeams.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>Microsoft Teams チーム タブ<br>設定ページ サンプル</h1>
+
+        タブの背景色 : 
+        <!--タブとして追加されるページの背景色を指定-->
+        <select id="colorSelector" >
+            <option value="white" >白</option>
+            <option value="gainsboro">灰</option>
+            <option value="skyblue">青</option>
+            <option value="yellow">黄</option>
+        </select>
+        <script>
+            let colorName = '';
+            microsoftTeams.initialize();
+            microsoftTeams.settings.registerOnSaveHandler(function (saveEvent) {
+                microsoftTeams.settings.setSettings({
+                    entityId: 'myteamtab',
+                    contentUrl: 'ngrok の ドメイン名/index.html' + colorName,
+                    suggestedDisplayName: 'My first Team Tab',
+                    websiteUrl: '',
+                    removeUrl: 'ngrok の ドメイン名/config.html',
+                });
+                saveEvent.notifySuccess();
+            });
+            microsoftTeams.settings.setValidityState(true);
+            document.getElementById('colorSelector').addEventListener('change',(evnt)=>{
+                colorName = '?' + evnt.target.value;
+            });
+        </script>
+    </body>
+    </html>
+    ```
+    [Ctrl] + [S] キーを押下して変更を保存します。
+
+6. Visual Studio Code のメニュー [Terminal] - [New Terminal] をクリックします。
+
+7. 画面下部にターミナルウインドウが表示されるので、同ウィンドウ内で以下のコマンドを実行してシェルを Command Prompt に変更します。
+    ```
+    cmd
+    ```
+8. ターミナルウインドウで以下のコマンドを実行します。
+    ```
+    http-server
+    ```
+    もし、http-server が起動しない場合は Readme の \[[要件](Readme.md#要件)] の内容を確認してください。
+
+9. Web ブラウザーを起動し、以下の URL にアクセスします。
+    ```
+    http://127.0.0.1:8080/index.html
+    ```
+    以下の内容が表示されることを確認してください。
+
+    <img src="images/TabConfigPage.png" width="400">
+
+10. コマンドプロンプトを起動し、cd コマンドで作業ディレクトリを ngrok.exe が配置されているディレクトリに切り替えます。
+
+     もし、ngrok をインストールしていない場合は Readme の \[[要件](Readme.md#要件)] の内容を確認してください。
+
+11. 以下のコマンドを実行して cmd にシェルを切り替えます。
+    ```
+    cmd
+    ```
+
+12. 以下のコマンドを実行します。
+    ```
+    ngrok http 8080 --host-header=localhost
+    ```
+13. エコーされた内容の Foewarding の横に表示された **https** のドメイン名を使用してアクセスします。
+
+    <img src="images/engrok.png">
+
+    たとえば、ngrok から返されたドメイン名が https://9fcf38b6.engrok.io だった場合は以下の URL でインターネットからローカルの default.html にアクセスすることができます。 
+
+    https://9fcf38b6.engrok.io/config.html
+
+    ローカル アドレスでアクセスしたのと同じコンテンツが表示されることを確認してください。
+
+    なお、ngrok はこの手順が完了するまで絶対に終了しないでください。
+
+14. Visual Studio Code で開かれている config.html の \<script> タグ内のコード中の「**ngrok の ドメイン名**」と書かれている箇所を ngrok の **https** のドメイン名に書き換え、キーボードの \[Ctrl] + \[S] キーを押下して保存します。
+
+15. Visual Studio Code でタスク 1 で作成した index.html を開きます。
+
+16. \<script> タグの中のコードにあるコメント「/* ここに演習 2 のタスク 2 でコードを追加*/」を以下のコードで置き換えます。
+    ```
+    // URL に付加された色名から背景色を設定
+    ((qString)=>{
+        document.body.style.backgroundColor = (qString)? (qString.substr(1,qString.length -1)):''; 
+    })(window.location.search);
+    ```
+    [Ctrl] + [S] キーを押下して変更を保存します。
+
+ここまでの作業で、チーム タブの設定画面の作成は完了です。
+
+### App Studio でのチーム タブの追加
+前述の手順で作成した config.html を App Studio からチームタブの設定ページとして登録します。
+
+手順は以下のとおりです。
+
+1. Microsoft Teams で App Studio を起動します。
+
+5. アプリの一覧から [演習 1](Tut01.md) で登録したアプリ **My first app** のタイルをクリックして設定画面を開きます。
+
+3. App Studio の左側のツリーメニュー \[2 Capabilities] - \[Tabs] をクリックします。
+
+4. 右側に **Tabs** の画面が表示されるので、ラベル **Team tab** の下の \[**Add**] ボタンをクリックします。
+
+5. **Taem tab** の設定ダイアログボックスが表示されるので、各項目を以下のように設定します。  
+    |項目|値|
+    |---|---|
+    | *Cinfigration URL | ngrok でホストされている config.html の URL |
+    | Can update configuration? | チェック |
+    | Scope | Team : チェック<br>Group  chat : チェック|
+    
+    SharePoint ページについての以下の 2 つのチェックボックスはチェックしません。
+    * Runs the tab as an "app page" (a full  screen experience) in SharePoint
+    * Runs the tab as a ""
+
+    \[Save] ボタンをクリックして保存します。
+    
+6. App Studio の左側のツリーメニュー \[3 Finish] - \[Test ans distribute] をクリックします。
+
+7. **Test and Distribute** の画面が表示されるので同画面の \[Install] ボタンをクリックします。
+
+8. **My first app** のダイアログボックスが表示されるので \[チームに追加] ボタンをクリックします。
+
+9. **My first app を使い始めるチャネルの選択** ダイアログボックスが表示されるので、同ダイアログボックスの検索ボックスでタブを追加するチャネルかを選択し、\[タブを設定] ボタンをクリックします。
+
+10. 前述の手順で作成した config.html が設定ダイアログボックスとして表示されるので、config.html 内の \[タブの背景色] ドロップダウンリストボックスから任意の色名を選択して \[保存] ボタンをクリックします。
+
+    <img src="images/tabConfigDialog.png" width="300">
+
+以上で、チーム タブの追加は完了です。
+
+選択したチャネルにタブが追加され、背景色が設定ダイアログボックスで指定した色になっていることを確認してください。
 
 
 ## 目次
