@@ -8,13 +8,13 @@ GitHib リポジトリ [**OfficeDev/microsoft-teams-sample-auth-node**](https://
 
 サンプルプロジェクトの具体的な入手方法は以下の通りです。
 
-* Clone (※ [**git**](https://git-scm.com/downloads) がインストールされている必要があります)
+* **Clone (※ [**git**](https://git-scm.com/downloads) がインストールされている必要があります)**
     
     コマンドプロンプトで任意のディレクトリに移動して以下のコマンドを実行します。
 
     `git clone https://github.com/OfficeDev/microsoft-teams-sample-auth-node.git`
 
-* zip ファイルとして入手
+* **zip ファイルとして入手**
 
     サンプルの[**リポジトリ**](https://github.com/OfficeDev/microsoft-teams-sample-auth-node)にアクセスして緑色の \[**Clone  or download**\] ボタンをクリック
 
@@ -26,17 +26,19 @@ GitHib リポジトリ [**OfficeDev/microsoft-teams-sample-auth-node**](https://
 
 ## サンプル プロジェクトの準備
 
-サンプル プロジェクトが必要とするさまざまなライブラリをダウンロードしてインストールします。この作業は **npm** コマンドを使用して一括して行われます。
+サンプル プロジェクトが必要とするさまざまなモジュールをダウンロードしてインストールします。この作業は **npm** コマンドを使用して一括して行われます。
 
 手順は以下のとおりです。
 
-1. コマンドプロンプトを起動して作業ディレクトリをダウンロードしたプロジェクトのフォルダ **microsoft-teams-sample-complete-node** に切り替えます。
+1. コマンドプロンプトを起動し、作業ディレクトリをダウンロードしたプロジェクトのフォルダ **microsoft-teams-sample-complete-node** に切り替えます。
 
 2. 以下のコマンドを実行します。
     ```
     npm install
     ```
-3. 前の手順の実行の完了を待ち、以下のコマンドを実行して Visual Studio Code 起動します。
+    プロジェクトのビルドや実行に必要となるモジュールがダウンロードされるので完了するまで待ちます。
+
+3. 以下のコマンドを実行して Visual Studio Code 起動します。
 
     ```
     code .
