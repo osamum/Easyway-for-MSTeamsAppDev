@@ -80,7 +80,7 @@ GitHib リポジトリ [**OfficeDev/microsoft-teams-sample-auth-node**](https://
     | ---- | ---- |
     |名前|任意のもの|
     |サポートされているアカウントの種類|任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)
-    |リダイレクト URI (省略可能)|https://ngrok のドメイン名/authEnd.html
+    |リダイレクト URI (省略可能)|https://ngrok のドメイン名/tab-auth/silent-end
 
 5. 登録したアプリケーションが一覧に表示されるので、選択して、左側のブレードの \[**認証**\] をクリックします。
 
