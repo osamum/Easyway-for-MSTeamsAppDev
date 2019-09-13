@@ -94,19 +94,19 @@ Microsoft Teams へ Bot Framework SDK で作成したボットを登録します
 
 4. **Set up s bot** ダイアログボックスが表示されるので、各項目を以下のように設定します。
 
-    * \[*Name\]
+    * *Name
 
         **EchoBot**
 
-    * \[Massaging bot\]
+    * Massaging bot
 
         **My bot supports uploading and downloading files** にチェック
 
-    * \[Calling bot]
+    * Calling bot
 
         なにもチェックしない
 
-    * \[*Scope\]
+    * *Scope
 
         **Personal**, **Team**, **Group Chat** にチェック
 
