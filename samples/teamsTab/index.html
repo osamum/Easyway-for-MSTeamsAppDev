@@ -11,6 +11,17 @@
         .context-data {
             color: blue;
         }
+
+        #embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 60%;
+            padding-left: calc(20% - 20px);
+            padding-top: calc(10% - 20px);
+            border-style: none;
+        }
     </style>
 </head>
 
@@ -42,6 +53,14 @@
             });
         })
 
+        document.body.addEventListener('click',()=>{
+                document.getElementById('embed-container').style.display = 'none';
+        });
+
+        function showTaskmodule(){
+            $id('embed-container').style.display = 'block';
+            event.stopPropagation();
+        }
         
     </script>
 
@@ -66,6 +85,11 @@
             <td id="showLocale" class="context-data"></td>
         </tr>
     </table>
+    <button onclick="showTaskmodule()">タスクモジュールを表示</button>
+    <div id="embed-container" style="display: none">
+            <iframe width="1000" height="700" src="https://www.youtube.com/embed/rd0Rd8w3FZ0" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+    </div>
 </body>
 
 </html>

@@ -59,7 +59,7 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
 
 * **ボット**
 
-    Bot Builder SDK 4 - Microsoft Teams Extensions
+    [Bot Builder SDK 4 - Microsoft Teams Extensions](https://github.com/OfficeDev/BotBuilder-MicrosoftTeams-dotnet)
 
     [C\#](https://github.com/OfficeDev/BotBuilder-MicrosoftTeams-dotnet)
 
