@@ -80,7 +80,7 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
 
 なお、このチュートリアルは、Microsoft Teams 初学者向けに Teams アプリの開発開始までのスピードアップを目的としているため Microsoft Graph 関連については扱いません。
 
-**⇒【 [Microsoft Teams アプリケーションの新規作成](Ex01.md) 】へ**
+**⇒【 1. [Microsoft Teams アプリケーションの新規作成](Ex01.md) 】へ**
 
 ## 目次
 0. [**Microsoft Teams アプリケーション開発について**](Intro.md)
