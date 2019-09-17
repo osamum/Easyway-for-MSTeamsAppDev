@@ -12,6 +12,7 @@
             color: blue;
         }
 
+        /*ここに演習 2 のタスク 3 で CSS を追加*/
         #embed-container iframe {
             position: absolute;
             top: 0;
@@ -53,8 +54,9 @@
             });
         })
 
+        /*ここに演習 2 のタスク 3 で コードを追加します*/
         document.body.addEventListener('click',()=>{
-                document.getElementById('embed-container').style.display = 'none';
+            $id('embed-container').style.display = 'none';
         });
 
         function showTaskmodule(){
@@ -85,10 +87,12 @@
             <td id="showLocale" class="context-data"></td>
         </tr>
     </table>
+
+    <!-- ここに演習 2 のタスク 3 でタグを追加-->
     <button onclick="showTaskmodule()">タスクモジュールを表示</button>
     <div id="embed-container" style="display: none">
-            <iframe width="1000" height="700" src="https://www.youtube.com/embed/rd0Rd8w3FZ0" frameborder="0"
-                allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+        <iframe width="1000" height="700" src="https://www.youtube.com/embed/rd0Rd8w3FZ0" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
     </div>
 </body>
 
