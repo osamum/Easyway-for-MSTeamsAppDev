@@ -83,7 +83,6 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
 **⇒【 1. [Microsoft Teams アプリケーションの新規作成](Ex01.md) 】へ**
 
 ## 目次
-## 目次
 0. [**Microsoft Teams アプリケーション開発について**](Intro.md)
 
 1. [**Microsoft Teams アプリケーションの新規作成**](Ex01.md)
@@ -98,6 +97,6 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
     * [**ボットの登録**](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/master/Ex03.md#microsoft-teams-へのボットの登録)
     * Teams Bot Builder SDK を使用した拡張
 4. [**タブとボットのシングルサインオン**](Ex04.md)
-5. [**メッセージ拡張とメッセージアクション**](Tut06.md)
-6. [**コネクタ**](Tut07.md)
+5. [**メッセージ拡張とメッセージアクション**](Ex05.md)
+6. [**コネクタ**](Ex06.md)
 
