@@ -64,7 +64,23 @@
     
 3. [**ボット**](Ex03.md)
     * [**ボットの登録**](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/master/Ex03.md#microsoft-teams-へのボットの登録)
-    * Teams Bot Builder SDK を使用した拡張
 4. [**タブとボットのシングルサインオン**](Ex04.md)
 5. [**メッセージ拡張とメッセージアクション**](Ex05.md)
 6. [**コネクタ**](Ex06.md)
+
+## 既知の問題
+
+### 「演習 4 : タブとボットのシングルサインオン」のサンプルが Visual Studio Code から実行できない
+
+演習 4 では、Microsoft Teams の開発チームが用意している以下のサンプルを使用しますが、
+
+ *  [**OfficeDev/microsoft-teams-sample-auth-node**](https://github.com/OfficeDev/microsoft-teams-sample-auth-node/issues)
+
+現在 (2019/10) の Node.js の安定版(v10.16.3)で動作させようとすると Gulp の実行でエラーが発生し、プロジェクトを実行することができません。
+
+この問題については GitHub の [Issue に登録済](https://github.com/OfficeDev/microsoft-teams-sample-auth-node/issues/19)ですが、現在はまだ回避策をふくめレスがありません。
+
+とりあえずの回避策としては、以下のサイトより以前のバージョンの Node.js を使用することで回避できる場合があります。
+
+* [**node.js.org - Previous Releases**](https://nodejs.org/en/download/releases/)
+
