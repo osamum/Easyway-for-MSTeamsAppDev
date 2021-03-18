@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Microsoft Teams JavaScript API (via CDN) -->
+    <script src="https://statics.teams.microsoft.com/sdk/v1.5.2/js/MicrosoftTeams.min.js"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>新規顧客情報の入力 : </h1>
+    <form method="POST" id="customerForm" action="https://httprequestchecker.azurewebsites.net/api/Values"
+    onSubmit="return validateForm()">
+    <!-- form の action 属性に設定されている URL は POST された内容を JSON で返すだけの検証用のサービスです。 
+        POST された情報は保存されないので、このまま演習に使用してください。
+    -->
+        <div id="infoBox" style="width: 380px;height: 400px;">
+            <div>Name:</div>
+            <div>
+                <input type="text" name="name" style="width: 100%;">
+            </div>
+            <div>Email:</div>
+            <div>
+                <input type="text" name="email" style="width: 100%;">
+            </div>
+            <div>Favorite book:</div>
+            <div>
+                <input type="text" name="favoriteBook" style="width: 100%;">
+            </div>
+            <div>
+                <input type="submit" value="登録">
+            </div>
+        </div>
+    </form>
+</body>
+<script>
+    microsoftTeams.initialize();
+    //タスクモジュールの呼び出し元に返す情報をセット
+    function validateForm() {
+        let customerInfo = {
+            name: document.forms['customerForm']['name'].value,
+            email: document.forms['customerForm']['email'].value,
+            favoriteBook: document.forms['customerForm']['favoriteBook'].value
+        }
+        //タスクモジュールを閉じ、情報を呼び出し元に送る
+        microsoftTeams.tasks.submitTask(customerInfo, 'ここに Teams アプリのApp IDを記述');
+        return true;
+    }
+</script>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Teams Tab App Sample</title>
+    <style>
+        table {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .context-data {
+            color: blue;
+        }
+
+        #embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 95%;
+            height: 95%;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-style: none;
+        }
+    </style>
+    <!-- Microsoft Teams JavaScript API (via CDN) -->
+    <script src="https://statics.teams.microsoft.com/sdk/v1.5.2/js/MicrosoftTeams.min.js"
+        crossorigin="anonymous"></script>
+    <script>
+        let $id = (id) => { return document.getElementById(id); }
+        let display, videoFrame, videoContainer;
+
+        //microsoftTeams クラスの初期化
+        microsoftTeams.initialize();
+
+        //DOM がロードされてから
+        document.addEventListener('DOMContentLoaded', () => {
+            //Microsoft Teams のユーザーコンテキストを取得
+            microsoftTeams.getContext((context) => {
+                $id('showUpn').innerText = context.upn;
+                $id('showObjectId').innerText = context.userObjectId;
+                $id('showTheme').innerText = context.theme;
+                $id('showLocale').innerText = context.locale;
+            });
+            display = $id('display');
+            // URL に付加された色名から背景色を設定
+            ((qString) => {
+                document.body.style.backgroundColor = (qString) ? (qString.substr(1, qString.length - 1)) : '';
+            })(window.location.search);
+
+            videoFrame = $id('videoFrame');
+            videoContainer = $id('embed-container');
+            document.body.addEventListener('click', () => {
+                videoContainer.style.display = 'none';
+            });
+        });
+
+        function displayInfo(infoText) {
+            let div = document.createElement('div');
+            div.innerText = infoText;
+            display.appendChild(div);
+        }
+
+        function showGetUserInfoTaskMod() {
+            //url プロパティにタスクモジュールとして表示する html を指定
+            const taskModuleInfo = {
+                title: "Custom Form",
+                height: 510,
+                width: 430,
+                url: `https://${document.domain}/inputform.html`,
+                card: null,
+                fallbackUrl: null,
+                completionBotId: null,
+            };
+
+            let submitHandler = (err, result) => {
+                displayInfo(`Submit handler - err: ${err}`);
+                displayInfo(`Submit handler - result\rName: ${result.name}\rEmail: ${result.email}\rFavorite book: ${result.favoriteBook}`);
+            };
+            microsoftTeams.tasks.startTask(taskModuleInfo, submitHandler);
+        }
+
+        const adptvCard = {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.0",
+            "body": [
+                {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "YouTube Video Selector",
+                            "weight": "bolder",
+                            "size": "extraLarge"
+                        }
+                    ]
+                }, {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "タスクモジュールのプレーヤーに表示するYouTube動画のIDを入力してください。",
+                            "wrap": true
+                        }, {
+                            "type": "Input.Text",
+                            "id": "youTubeVideoId",
+                            "value": "rd0Rd8w3FZ0"
+                        }
+                    ]
+                }
+            ],
+            "actions": [
+                {
+                    "type": "Action.Submit",
+                    "title": "Update"
+                }
+            ]
+        };
+
+        function showSetVidoCodeTaskMod() {
+            const taskModuleInfo = {
+                title: "YouTube Video Selector",
+                card: adptvCard,
+                width: 350,
+                height: 250
+            };
+
+            let submitHandler = (err, result) => {
+                displayInfo('----- Submit handler info -----');
+                displayInfo(`Submit handler - err: ${err}`);
+                displayInfo(`Submit handler - result\r YouTube Video ID: ${result.youTubeVideoId}`);
+
+                videoFrame.src = `https://www.youtube.com/embed/${result.youTubeVideoId}`;
+                videoContainer.style.display = 'block';
+
+            };
+            microsoftTeams.tasks.startTask(taskModuleInfo, submitHandler);
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Microsoft Teams Tab App サンプル</h1>
+    <h2>Teams のユーザーとチャネルコンテキスト</h2>
+    <p>以下にはプラグインされた Teams の Tab SDK で取得されたユーザーのコンテキスト情報が表示されます。 </p>
+    <table>
+        <tr>
+            <td>UPN</td>
+            <td id="showUpn" class="context-data"></td>
+        </tr>
+        <tr>
+            <td>userObjectId</td>
+            <td id="showObjectId" class="context-data"></td>
+        </tr>
+        <tr>
+            <td>Theme</td>
+            <td id="showTheme" class="context-data"></td>
+        </tr>
+        <tr>
+            <td>Locale</td>
+            <td id="showLocale" class="context-data"></td>
+        </tr>
+    </table>
+
+    <button onclick="showGetUserInfoTaskMod()">別 html のフォームをタスクモジュールとして表示</button>
+    <br><br>
+
+    <button onclick="showSetVidoCodeTaskMod()">AdaptiveCard をタスクモジュールとして表示</button>
+    <div id="embed-container" style="display: none">
+        <iframe id="videoFrame" width="1000" height="700" src="https://www.youtube.com/" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+    </div>
+    <div id="display"></div>
+</body>
+
+</html>
