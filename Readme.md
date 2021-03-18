@@ -19,7 +19,11 @@
 * **Microsoft Office 365 Business Premium 以上の[ライセンス](https://products.office.com/ja-JP/compare-all-microsoft-office-products-b?tab=2)**
 
     ライセンスを持っていない開発者は [Office 365 開発者プログラム](https://developer.microsoft.com/ja-JP/office/dev-program
-)に参加して開発者用の無料の Office 365 のサブスクリプションを入手することもできます。このサブスクリプションでは [Office 365 Enterprise E3 Developer](https://docs.microsoft.com/ja-jp/office/developer-program/office-365-developer-program-get-started) が 1 年間無償で使用することができます。
+)に参加して開発者用の無料の Office 365 のサブスクリプションを入手することもできます。このサブスクリプションでは [Office 365 Enterprise E3 Developer](https://docs.microsoft.com/ja-jp/office/developer-program/office-365-developer-program-get-started) が 90 日間無償で使用することができます。このライセンスを開発に積極的に使用している場合は、90 日ごとにサブスクリプションが自動的に更新されます。
+
+    詳しくは以下のドキュメントをご参照ください。
+
+    * [Microsoft 365 開発者プログラムの FAQ - 1 年間のサブスクリプションをなぜ提供しないのですか？](https://docs.microsoft.com/ja-jp/office/developer-program/microsoft-365-developer-program-faq#renew-subscription)
 
 * **Microsoft Teams 管理センターでサイドローディングの許可**
 
@@ -41,6 +45,13 @@
     ```
     npm install http-server -g
     ```
+
+    メッセージング拡張の開発のチュートリアルで使用する Microsoft Teams Toolkit もインストールしておいてください。
+
+    * [Visual Studio Code 用 Microsoft Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.ms-teams-vscode-extension)
+
+    * [Visual Studio 用 Microsoft Teams Toolkit](https://marketplace.visualstudio.com/items?itemName=TeamsDevApp.vsteamstemplate)
+
 
 * **デスクトップ版 Microsoft Teams**
 
@@ -69,18 +80,3 @@
 6. [**コネクタ**](Ex06.md)
 
 ## 既知の問題
-
-### 「演習 4 : タブとボットのシングルサインオン」のサンプルが Visual Studio Code から実行できない
-
-演習 4 では、Microsoft Teams の開発チームが用意している以下のサンプルを使用しますが、
-
- *  [**OfficeDev/microsoft-teams-sample-auth-node**](https://github.com/OfficeDev/microsoft-teams-sample-auth-node/issues)
-
-現在 (2019/10) の Node.js の安定版(v10.16.3)で動作させようとすると Gulp の実行でエラーが発生し、プロジェクトを実行することができません。
-
-この問題については GitHub の [Issue に登録済](https://github.com/OfficeDev/microsoft-teams-sample-auth-node/issues/19)ですが、現在はまだ回避策をふくめレスがありません。
-
-とりあえずの回避策としては、以下のサイトより以前のバージョンの Node.js を使用することで回避できる場合があります。
-
-* [**node.js.org - Previous Releases**](https://nodejs.org/en/download/releases/)
-

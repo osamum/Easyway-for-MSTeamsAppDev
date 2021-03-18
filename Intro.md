@@ -9,7 +9,7 @@ Microsoft Teams は、Office 365 でのチーム コラボレーションのハ�
 Tems ではチャットやファイル共有、ビデオ会議といった豊富な機能を提供しますが、アプリケーションを開発することによって、さらにその業務に最適なソリューションを提供できます。
 
 ## Microsoft Teams プラットフォームの特徴
-Microsoft Teams はアプリケーションとしてでなく、サードパーティーのアプリやそれらを使用したプロセス、開発ツールも用意されており、単なるアプリケーションのカスタマイズではなく、開発のプラットフォームとして機能します。
+Microsoft Teams はアプリケーションとしてだけでなく、サードパーティーのアプリやそれらを使用したプロセス、開発ツールも用意されており、単なるアプリケーションのカスタマイズではなく、開発のプラットフォームとして機能します。
 
 このプラットフォームには 3 つの大きな特徴があります。
 
@@ -20,7 +20,7 @@ Microsoft Teams はアプリケーションとしてでなく、サードパー�
 ### シームレスなコンテキストの切り替え
 Microsoft Teams ではコンテキストを切り替えることなく、さまざまに異なるコンテキストを取得することができます。
 
-たとえば業務で使用する複数の情報ツールからは、それぞれ異なる情報や、重複する情報が入ってきます。それらの情報を一か所に統合し情報収集の無駄を減らす、いわばキュレーションの能力です。
+たとえば業務で使用する複数の情報ツールからは、それぞれ異なる情報や重複する情報が入ってきます。それらの情報を一か所に統合し情報収集の無駄を減らす、いわばキュレーションの能力です。
 
 組織が既に使用しているすべてのアプリとツールを 1 つのユーザーインターフェイスにまとめることができるので、情報収集や業務ツールの使用にかかる工数を減らすことができます。
 
@@ -42,7 +42,7 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
 * タブ
 * ボット
 * コネクタ
-* メッセージ拡張
+* メッセージング拡張
 
 <img src="images/TypeOfTeamsApps.png" width="300">
 
@@ -59,7 +59,9 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
 
 * **ボット**
 
-    [Bot Builder SDK 4 - Microsoft Teams Extensions](https://github.com/OfficeDev/BotBuilder-MicrosoftTeams-dotnet)
+    ~~[Bot Builder SDK 4 - Microsoft Teams Extensions](https://github.com/OfficeDev/BotBuilder-MicrosoftTeams-dotnet)~~
+
+    (※) Bot Framework 4.6 から Bot Framework SDK に統合され、個別のインストールは不要になりました。
 
     [C\#](https://github.com/OfficeDev/BotBuilder-MicrosoftTeams-dotnet)
 
@@ -76,9 +78,9 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
 
 この中には、Microsoft Teams のもう一つの大きな特色である通話やオンライン会議の API も含まれます。
 
-* [**Microsoft Graph で通話とオンライン会議の API を使用する**](https://docs.microsoft.com/ja-jp/graph/api/resources/calls-api-overview?view=graph-rest-beta)
+* [**Microsoft Graph で通信 API を操作する**](https://docs.microsoft.com/ja-jp/graph/api/resources/communications-api-overview?view=graph-rest-1.0)
 
-なお、このチュートリアルは、Microsoft Teams 初学者向けに Teams アプリの開発開始までのスピードアップを目的としているため Microsoft Graph 関連については扱いません。
+なお、このチュートリアルは、Microsoft Teams 初学者向けに Teams アプリの開発開始までのスピードアップを目的としているため Microsoft Graph 関連については扱いませんが、別途、初学者向けの簡易チュートリアルを用意しましたので[そちら](https://github.com/osamum/Firstway_to_MSTeamsGraphAPI)をご利用ください。
 
 **⇒【 1. [Microsoft Teams アプリケーションの新規作成](Ex01.md) 】へ**
 
