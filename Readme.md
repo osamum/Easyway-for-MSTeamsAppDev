@@ -75,8 +75,8 @@
     
 3. [**ボット**](Ex03.md)
     * [**ボットの登録**](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/master/Ex03.md#microsoft-teams-へのボットの登録)
-4. [**タブとボットのシングルサインオン**](Ex04.md)
-5. [**メッセージ拡張**](Ex05.md)
+4. [**メッセージ拡張**](Ex04.md)
+5. [**タブとボットのシングルサインオン**](Ex05.md)
 6. [**コネクタ**](Ex06.md)
 
 ## 既知の問題
