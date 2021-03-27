@@ -6,7 +6,7 @@ Microsoft Teams は、Office 365 でのチーム コラボレーションのハ�
 
 チームが結束して成果をあげるのに必要な人、コンテンツ、ツールがここに集まります。
 
-Tems ではチャットやファイル共有、ビデオ会議といった豊富な機能を提供しますが、アプリケーションを開発することによって、さらにその業務に最適なソリューションを提供できます。
+Teams ではチャットやファイル共有、ビデオ会議といった豊富な機能を提供しますが、アプリケーションを開発することによって、さらにその業務に最適なソリューションを提供できます。
 
 ## Microsoft Teams プラットフォームの特徴
 Microsoft Teams はアプリケーションとしてだけでなく、サードパーティーのアプリやそれらを使用したプロセス、開発ツールも用意されており、単なるアプリケーションのカスタマイズではなく、開発のプラットフォームとして機能します。
@@ -53,7 +53,7 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
 ## Microsoft Teams の SDK と API
 既存の Web アプリケーションやボットを Microsoft Teams 用に拡張するために以下のような SDK が用意されています。
 
-* **Web クライアント (タブ アプリケーションむけ)**
+* **Web クライアント (タブ アプリケーション向け)**
 
     [Microsoft Teams JavaScript client SDK](https://docs.microsoft.com/en-us/javascript/api/overview/msteams-client)
 
@@ -91,7 +91,7 @@ Microsoft Teams はマルチプラットフォーム、マルチデバイスで�
     * [**App Studio を使用したマニフェストファイルの作成**](Ex01.md#app-studio-を使用した-teams-アプリケーションの登録)
 2. [**タブ アプリケーション**](Ex02.md)
     * [**パーソナル タブ**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E9%9D%99%E7%9A%84-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)
-    * [**チーム タブ**](Ex02.md#%E3%83%81%E3%83%BC%E3%83%A0-%E6%A7%8B%E6%88%90%E5%8F%AF%E8%83%BD-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)
+    * [**チーム タブ**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-2--%E3%83%81%E3%83%BC%E3%83%A0-%E6%A7%8B%E6%88%90%E5%8F%AF%E8%83%BD-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)
 
     * [**タブ : タスクモジュールの表示**](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/master/Ex02.md#タスク-3-タブでのタスク-モジュールの表示)
 
