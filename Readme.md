@@ -41,7 +41,7 @@
 
     ボットとメッセージ拡張の開発のチュートリアルで使用します。
 
-    ボットを C# で開発する場合は Visual Studio 201x を JavaScript で開発する場合は Visual Studio Code と [Node.js](https://nodejs.org/en/) をが必要です。
+    ボットを C# で開発する場合は Visual Studio 201x を、JavaScript で開発する場合は Visual Studio Code と [Node.js](https://nodejs.org/en/) をインストールしてください。
 
     また、Visual Studio Code を使用する場合は、ローカル環境で Web サーバーを動かすために以下のコマンドを使用して http-server をインストールしてください。
 
