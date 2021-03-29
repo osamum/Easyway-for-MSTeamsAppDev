@@ -32,7 +32,7 @@
 
     Microsoft Teams 管理センターにて、開発したアプリケーションがサイドローディングできるように許可を行ってください。
     
-    具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[Teams のアプリ\] - \[[セットアップ ポリシー](https://admin.teams.microsoft.com/policies/app-setup/edit/)\] で 「カスタム アプリのアップロードを許可」をオンにします。
+    具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[Teams のアプリ\] - \[グローバル (組織全体の既定値)\]-\[セットアップ ポリシー](https://admin.teams.microsoft.com/policies/app-setup/edit/)\] で 「カスタム アプリのアップロードを許可」をオンにします。
 
     <img src="images/SetupPolicy.png" width="400">
 
