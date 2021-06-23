@@ -1,6 +1,9 @@
 # Microsoft Teams 開発者向け簡易チュートリアル
 
-2021 年 4 月版
+2021 年 6 月 1 版
+
+## 更新内容
+- [**メッセージング拡張**](Ex04.md) のハンズオンの手順を Build 2021 のタイミングで発表された Microsoft Teams Toolkit バージョン 2 に合わせて変更しました。
 
 ## 概要
 このチュートリアルは、これから Microsoft Teams 向けのアプリケーションの開発を行う初学者のための簡易的なものであり、実際の開発に取り掛かるまでの学習期間の短縮を目的としています。
@@ -14,7 +17,7 @@
 * タブ
 * ボット
 * コネクタ
-* メッセージ拡張
+* メッセージング拡張
 
 ## 要件
 このチュートリアルを実施するには以下の環境が必要です。
@@ -32,9 +35,9 @@
 
     Microsoft Teams 管理センターにて、開発したアプリケーションがサイドローディングできるように許可を行ってください。
     
-    具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[Teams のアプリ\] - \[グローバル (組織全体の既定値)\]-\[セットアップ ポリシー\] で 「カスタム アプリのアップロードを許可」をオンにします。
+    具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[Teams のアプリ\] - \[アプリの管理\] の画面内にある \[**組織全体のアプリ設定**\] ボタンをクリックし、表示されたブレード内の 「カスタム アプリとの相互作用を許可する」をオンにします。
 
-    <img src="images/SetupPolicy.png" width="400">
+    <img src="images/21june_allowCustomApp.png" width="300">
 
 
 * **[Visual Studio 2018 以上のエディション](https://visualstudio.microsoft.com/ja/vs/)、もしくは [Visual Studio Code](https://code.visualstudio.com/Download)**
