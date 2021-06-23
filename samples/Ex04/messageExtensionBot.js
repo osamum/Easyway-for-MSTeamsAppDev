@@ -26,6 +26,7 @@ class MessageExtensionBot extends TeamsActivityHandler {
       })}`
     );
     */
+
     //Wikipedia の API のエンドポイントを指定
     const response = await axios.get(`https://ja.wikipedia.org/w/rest.php/v1/search/page?${querystring.stringify({ q: searchQuery, size: 8 })}&limit=10`);
 
@@ -38,19 +39,31 @@ class MessageExtensionBot extends TeamsActivityHandler {
         type: "invoke",
         value: { description: obj.package.description },
       };
+    */
+
+    //Wikipedia API が返すデータの構造に合わせた変更
+    response.data.pages.forEach(obj => {
+      const heroCard = CardFactory.heroCard(obj.title);
+      const preview = CardFactory.heroCard(obj.title); // Preview cards are optional for Hero card. You need them for Adaptive Cards.
+      const url = 'https://ja.wikipedia.org/wiki/' + obj.title;
+
+      preview.content.tap = {
+        type: 'invoke', value: {
+          title: obj.title,
+          description: obj.excerpt,
+          images: this.getThumbnailUrl(obj),
+          buttons: {
+            'type' : 'openUrl',
+            'title' : '詳細',
+            'value' : url
+          }
+        }
+      };
       const attachment = { ...heroCard, preview };
       attachments.push(attachment);
     });
-    */
+    
 
-      //Wikipedia API が返すデータの構造に合わせた変更
-       response.data.pages.forEach(obj => {
-            const heroCard = CardFactory.heroCard(obj.title);
-            const preview = CardFactory.heroCard(obj.title); // Preview cards are optional for Hero card. You need them for Adaptive Cards.
-            preview.content.tap = { type: 'invoke', value: { description: obj.excerpt } };
-            const attachment = { ...heroCard, preview };
-            attachments.push(attachment);
-        });
 
     return {
       composeExtension: {
@@ -66,10 +79,23 @@ class MessageExtensionBot extends TeamsActivityHandler {
       composeExtension: {
         type: "result",
         attachmentLayout: "list",
-        attachments: [CardFactory.thumbnailCard(obj.description)],
+        //チャット欄に heroCard が投稿されるように変更
+        //attachments: [CardFactory.thumbnailCard(obj.description)],
+        attachments: [CardFactory.heroCard(obj.title, obj.description, [obj.images], [obj.buttons])],
       },
     };
   }
+
+
+  // サムネイル画像の URL を抽出
+  getThumbnailUrl(item) {
+    if (item.thumbnail) {
+      return 'https:' + item.thumbnail.url;
+    } else {
+      return 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Wikipedia-logo-v2-en.svg/256px-Wikipedia-logo-v2-ja.svg.png';
+    }
+  }
+
 
   // Link Unfurling.
   handleTeamsAppBasedLinkQuery(context, query) {
