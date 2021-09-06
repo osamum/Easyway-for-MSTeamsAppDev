@@ -1,4 +1,14 @@
 # Change log
+
+## September 06 2021
+
+* ローカルの開発環境で動作しているボットのサービスを [**Azure Bot**](https://docs.microsoft.com/ja-jp/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0) に登録する手順も含めた Microsoft Teams 用 開発者ポータルを使用したボットの追加方法を追記
+
+
+    * [**Microsoft Teams 用 開発者ポータルを使用したボットの追加**](Ex03.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0)
+
+
+
 ## Augst 24 2021
 
 - [**Microsoft Teams アプリケーションの新規作成**](Ex01.md) と [**タブ アプリケーション**](Ex02.md) のページに以下の [**Microsoft Teams 用 開発者ポータル**](https://dev.teams.microsoft.com/) 関連の記述を追加
