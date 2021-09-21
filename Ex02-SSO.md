@@ -225,7 +225,9 @@ npm install -g express-generator
 
     登録の際、\[承認済みのスコープ] に api://で始まるアプリケーション URI のチェックボックスがリストされるので必ずチェックをつけます。
 
-    <img src="images/21Sep_AddAppInPublicAPI.png" width="500px">
+    実際の画面は以下のとおりです。
+    
+    <img src="images/21Sep_AddAppInPublicAPI.png" width="600px">
 
 17. 画面左のメニューで \[**API のアクセス許可**] をクリックします
 
@@ -233,7 +235,11 @@ npm install -g express-generator
 
     <img src="https://github.com/osamum/Firstway_to_MSTeamsGraphAPI/blob/master/images/ADD_AccessAllow.png" width="400px">
 
-    画面右に表示されたブレード内の \[Microsoft Graph]-\[委任されたアクセス許可]ボックスをクリックし、以下の権限にチェックをつけ \[アクセス許可の追加] ボタンをクリックします
+    画面右に表示されたブレード内の \[Microsoft Graph]-\[委任されたアクセス許可]ボックスをクリックし、
+    
+    <img src="https://github.com/osamum/Firstway_to_MSTeamsGraphAPI/blob/master/images/GraphAPI_tail.png" width="400px">
+    
+    以下の権限にチェックをつけ \[アクセス許可の追加] ボタンをクリックします
     - User.Read (既定で有効)
     - email
     - offline_access
@@ -242,6 +248,8 @@ npm install -g express-generator
     - Mail.Read
 
     \[+ アクセス許可の追加] の右隣にある\[**(ドメイン名) に管理者の同意を与えます**] をクリックし、同意を与えます。
+
+    <img src="images/21Sep_APIAccessAllow_AAD.png" width="600px">
 
     (※)もし、\[(ドメイン名) に管理者の同意を与えます]がグレーアウトしていてクリックできない場合は、管理者権限をもつアカウントで作業するか、別途 Azure Active Directory テナントを作成し、そちらで作業する必要があります。
     
@@ -260,7 +268,7 @@ npm install -g express-generator
 
 23. クライアントシークレットが生成されるので \[**値**] の内容をメモ帳などにコピーして保持します。
 
-    なお、**このシークレットの値は生成直後でないとコピーすることができません**ので必ずこのタイミングで取得しておいてください。
+    **なお、このシークレットの値は生成直後でないとコピーすることができませんので必ずこのタイミングで取得しておいてください。**
 
     <img src="images/21Sep_ClientSecret.png" width="500px">
 
