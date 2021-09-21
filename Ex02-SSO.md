@@ -1,17 +1,17 @@
 # タブのシングルサインオン (SSO)
-Microsoft Teamsを使用する際、ユーザーは Microsoftアカウントで Microsoft Teamsにサインインします。デスクトップやモバイルのクライアントでTeamsタブやタスクモジュールを認証するためのシングルサインオンを可能にすることで、。ユーザーが一度サインインすると、自動的にサインインされるので、他のデバイスで再度サインインする必要がありません。また、アクセストークンがプリフェッチされることで、パフォーマンスとロードタイムが向上します。
+Microsoft Teamsを使用する際、ユーザーは Microsoftアカウントで Microsoft Teamsにサインインします。デスクトップやモバイルのクライアントでTeamsタブやタスクモジュールを認証するためのシングルサインオンを可能にすることで、アプリ毎にサインインする必要が無くなり、機能的な統一感が保たれるだけでなくパフォーマンスとロードタイムが向上します。
 
-ユーザーが一度サインインした場合、自動的にサインインしている別のデバイスでもう一度サインインする必要はありません。 また、アクセス トークンは、パフォーマンスと読み込み時間を改善するために指定されています。
+##　この演習で実装するシングルサインオンの仕組み
 
 Microsoft Teams のタブアプリでは、Azure Active Directory とアプリ マニフェストを適切に設定し、タブ アプリのコードから [Teams Client JavaSctipt SDK](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/?view=msteams-client-js-latest) の [getAuthToken メソッド](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/microsoftteams.authentication?view=msteams-client-js-latest#getAuthToken_AuthTokenRequest_)を呼び出すことでユーザーのメール アドレスなど情報を抽出するみとのできるアクセストークンを取得できます。
 
-しかし、getAuthToken メソッドで取得できるアクセス トークンは、ユーザーレベルのGraph APIパーミッション（email、profile、offline_access、OpenId）のみサポートしています。User.ReadやMail.Readなど、他のGraphスコープへのアクセスが必要な場合は、このトークンを必要なスコープを含むトークンに交換する必要があります。
+しかし、getAuthToken メソッドで取得できるアクセス トークンは、ユーザーレベルのGraph APIパーミッション（email、profile、offline_access、OpenId）しかサポートしていないため、User.ReadやMail.Readなど、他のGraphスコープへのアクセスが必要な場合は、このトークンを必要なスコープを含むトークンに交換する必要があります。
 
 この演習では、Teams Client JavaSctipt SDK を使用して入手したトークンを、他のGraph API (の Mail.Read)を呼び出すことのできるスコープを持ったトークンに交換し、一覧を取得する機能を実装します。
 
 ## 前提条件
 
-この演習を行うには、[演習 2](Ex02.md) で**タブ アプリケーション**の作成方法を学習済みであるか同等の知識が必要です。
+この演習を行うには、[**演習 2**](Ex02.md) で**タブ アプリケーション**の作成方法を学習済みであるか、同等の知識を有していることが大前提となります。
 
 学習済みでない場合、最低限[**パーソナル タブ**の作り方の演習](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E9%9D%99%E7%9A%84-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)を行ってからこの演習に取り掛かってください。
 
@@ -19,24 +19,24 @@ Microsoft Teams のタブアプリでは、Azure Active Directory とアプリ �
 ## 演習の流れ
 今回の処理は、Azure Active Directory へのアプリの登録、アプリマニフェストの設定を適切に行い、静的ページで動作するシンプルなプライベート タブ アプリを作成します。
 
-同タブ アプリ内の JavaScript コードから Teams JavaScript Clienrt SDK の getAuthToken メソッドを呼び出してアクセス トークンを取得し、それを OAuth2.0 の [**On-Behalf-Of(代理) フロー**](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)を使用して異なるスコープをょ持ったトークンに交換します。
+同タブ アプリ内の JavaScript コードから Teams JavaScript Clienrt SDK の getAuthToken メソッドを呼び出してアクセス トークンを取得し、それを OAuth2.0 の [**On-Behalf-Of(代理) フロー**](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)を使用して異なるスコープを持ったトークンに交換します。
 
 この代理フロー処理はクライアント側の JavaScript では行えないため簡単な REAST API を作成してこれを呼び出して行い、交換後のアクセストークンを使用して Graph API が呼び出せることを確認します。
 
 具体的には以下のような順序で演習を進めます。
 
-1. シンプルなプライベート タブ アプリの作成
-2. タブ アプリの Azure Active Directory への登録
+1. [**シンプルなプライベート タブ アプリの作成**](#sso-%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AA%E3%82%BF%E3%83%96-%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E4%BD)
+2. [**タブ アプリの Azure Active Directory への登録**](#azure-active-directory-%E3%81%B8%E3%81%AE%E7%99%BB%E9%8C%B2)
 
     ⇒ Teams 上でタブ アプリを実行し Teams Client JavaScript SDK を使用してトークンが取得できることを確認
 
-3. トークンの交換を行うための REST API を作成
+3. [**トークンの交換を行うための REST API を作成**](#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BA%A4%E6%8F%9B%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%BD%9C%E6%88%90)
 
     ⇒ 交換したトークンと Graph API を使用してメールの一覧が取得できることを確認
 
 **RSET API の開発について**
 
-トークンを交換するための REST API の開発は Microsoft ID Platform のエンドポイントに対し適切な HTTP リクエストを送信できればどのような開発言語でもかまいませんが、今回は JavaScript が使用できる Node.js を使用します。
+トークンを交換するための REST API の開発は Microsoft ID Platform のエンドポイントに対し適切な HTTP リクエストを送信できればどのような開発言語でもかまいませんが、今回はクライアント サイドのコードと同じ JavaScript が使用できる Node.js を使用します。
 
 Web のフレームワークとして [express](http://expressjs.com/ja/) を使用しますので以下のコマンドを実行してどのディレクトリからでも実行できるようにしておくか、特定のディレクトでのみ使用したい場合は、目的のディレクトリで -g を指定せずにコマンドをします。
 
@@ -57,13 +57,11 @@ npm install -g express-generator
 
 演習のためのシンプルなタブ アプリを作成します。
 
-今回演習で使用するアプリは静的な html ファイルなので、http-server (開発用の Web サーバー) でホストして確認しても良いのですが、今回はトークンを交換するための REST API も作成するので Express を使用してプロジェクトを作成し、それを実行して html ファイルをホストします。
-
-なお、このプロジェクトは REST API の開発にも使用します。
+今回の演習で使用するアプリは静的な html ファイルなので、http-server (開発用の Web サーバー) でホストして確認することができますが、今回はトークンを交換するための REST API も作成するので Express を使用して Node.js プロジェクトを作成し、それを実行してタブアプリの html ファイルをホストします。
 
 プロジェクト作成からパーソナルタブの追加までの具体的な手順は以下のとおりです。
 
-1. コマンドプロンプトから以下のコマンドを実行し、プロジェクトの雛形を生成します
+1. コマンドプロンプトで、作業用のディレクトリに切り替えたら以下のコマンドを実行し、プロジェクトの雛形を生成します
 
     ```
     express ssoTabApp
@@ -93,7 +91,7 @@ npm install -g express-generator
     http://localhost:3000/
     ```
 
-    Web ブラウザーに「**Express**」と表示されることを確認後、コマンド プロンプトでキーボードの \[Ctrl\]+\[C\] キーを押下してプロジェクトの実行を停止します。
+    Web ブラウザーに「**Express**」と表示されることを確認後、コマンド プロンプトに戻り、キーボードの \[Ctrl\]+\[C\] キーを押下してプロジェクトの実行を停止します。
 
 4. 作業中のコマンドプロンプトで以下のコマンドを実行し、Visual Studio Code を起動します
 
@@ -104,7 +102,7 @@ npm install -g express-generator
 
     <img src="images/2021Sep_NewFileVSCode.png" width="400px">
 
-6. Visual Studio Code の編集画面に作成した index.html が開かれた状態になっているので、**!** (エクスクラメーションマーク)を入力したらすぐにキーボードの \[Tab\] キーを押下します
+6. Visual Studio Code の編集画面に、作成した index.html が開かれた状態になっているので、**!** (エクスクラメーションマーク)を入力したらすぐにキーボードの \[Tab\] キーを押下します
 
 7. html の基本的なタグが自動で挿入されるので、\<**html**\> タグの **lang** 属性を "en" から "**ja**" に変更し、body タグの中に以下のタグを貼り付けます
 
@@ -147,10 +145,10 @@ npm install -g express-generator
 
     ngrok が返したドメイン名は、以降の手順で頻繁に使用するのでテキストエディタに貼り付けるなどして保持してください。
 
-    **なお、ngrok は全ての演習の内容が完了するまで終了しないでください。**(ドメイン名が変わってしまうので)
+    なお、ngrok は全ての演習の内容が完了するまで**終了しないでください。**(ドメイン名が変わってしまうので)
 
 
-10. 前の手順で確認した ngrok でトンネリングされた URL を使用し、[**演習 2-1 : パーソナル タブの追加**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E9%9D%99%E7%9A%84-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0) の手順に従い、現在手元の環境でホストされている index.html を Teams のパーソナルタブ アプリとして追加してください
+10. 前の手順で確認した ngrok でトンネリングされた URL を使用し、[**演習 2-1 : パーソナル タブの追加**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E9%9D%99%E7%9A%84-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0) の手順に従い、手元の環境でホストされている index.html を Teams のパーソナルタブ アプリとして追加してください
 
     
 ## Azure Active Directory への登録
@@ -187,7 +185,7 @@ npm install -g express-generator
 
 9. 画面左のメニューの \[概要\] をクリックし、表示された画面で **\[アプリケーション (クライアント)\]** と　**\[ディレクトリ (テナント) ID\]**　の内容をコピーし、テキストファイルなどにメモします
 
-    ![AzureAD クライアントID](images/AAD_ClientID.png)
+    <img src="images/AAD_ClientID.png" width="600px">
 
 10. 画面左のメニューで \[**API の公開**] を選択します
 
@@ -197,7 +195,7 @@ npm install -g express-generator
     api://ngrok が生成したドメイン名/AppIDのGUID/access_as_user
     ```
 
-    この URI はアプリ マニフェストの設定で使用するのでメモ帳などの貼り付けて保持します
+    **この URI はアプリ マニフェストの設定で使用するのでメモ帳などの貼り付けて保持します。**
 
 12. \[**+ Scope の追加**]をクリックして\[スコープ名*] に **access_as_user** と入力します
 
@@ -212,6 +210,10 @@ npm install -g express-generator
     | ユーザーの同意の表示名 | Teams はユーザー プロファイルにアクセスし、ユーザーの代わりに要求を行うことができます。|
     | ユーザーの同意の説明 | Teams は、ユーザーと同じ権限でこのアプリの API を呼び出します。|
 
+    実際の画面は以下のとおりです。
+
+    <img src="images/21Sep_AddAAD_Scope.png" width="500px">
+
 15. \[状態] トグルボタンが \[**有効**] になっていることを確認し、\[スコープの追加] ボタンをクリックします。
 
 16. \[承認済 みクライアント アプリケーション] セクションで、\[**クライアント アプリケーションの追加**] をクリックし、以下の GUID をそれぞれ入力し \[アプリケーションの追加] ボタンをクリックして登録します。
@@ -223,9 +225,15 @@ npm install -g express-generator
 
     登録の際、\[承認済みのスコープ] に api://で始まるアプリケーション URI のチェックボックスがリストされるので必ずチェックをつけます。
 
+    <img src="images/21Sep_AddAppInPublicAPI.png" width="500px">
+
 17. 画面左のメニューで \[**API のアクセス許可**] をクリックします
 
-18. \[**+ アクセス許可の追加**] をクリックし、画面右に表示されたブレード内の \[Microsoft Graph]-\[委任されたアクセス許可]ボックスをクリックし、以下の権限にチェックをつけ \[アクセス許可の追加] ボタンをクリックします
+18. \[**+ アクセス許可の追加**] をクリックし、
+
+    <img src="https://github.com/osamum/Firstway_to_MSTeamsGraphAPI/blob/master/images/ADD_AccessAllow.png" width="400px">
+
+    画面右に表示されたブレード内の \[Microsoft Graph]-\[委任されたアクセス許可]ボックスをクリックし、以下の権限にチェックをつけ \[アクセス許可の追加] ボタンをクリックします
     - User.Read (既定で有効)
     - email
     - offline_access
@@ -638,9 +646,12 @@ Visual Studio Code から、プロセスに Node.js のデバッガをアタッ�
 
     <img src="images/21Sep_ChooseDebuger.png" width="500px">
 
-上記の手順でデバッガずアタッチされたホストプロセスが起動し、デバッグ実行などが可能になります。
+上記の手順でデバッガがアタッチされたホストプロセスが起動し、Node.js アプリケーションのデバッグ実行が可能になります。
 
 <img src="images/21Sep_BreakingVSCode.png">
+
+なお、Teams にロードされたタブ アプリ化された Web ページのデバッグ方法については以下を参考にしてください。
+
 
 
 
