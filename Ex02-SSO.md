@@ -192,7 +192,7 @@ npm install -g express-generator
 11. \[**設定**\]リンクをクリックすると、api://{AppID} の形式でアプリケーションIDのURIが生成されるので、api://の後ろに ngrok が生成したドメイン名を挿入して以下の形式の URI を設定します
 
     ```
-    api://ngrok が生成したドメイン名/AppIDのGUID/access_as_user
+    api://ngrok が生成したドメイン名/AppIDのGUID
     ```
 
     **この URI はアプリ マニフェストの設定で使用するのでメモ帳などの貼り付けて保持します。**
@@ -231,7 +231,7 @@ npm install -g express-generator
 
 17. 画面左のメニューで \[**API のアクセス許可**] をクリックします
 
-18. \[**+ アクセス許可の追加**] をクリックし、
+18. 遷移した画面で \[**+ アクセス許可の追加**] をクリックし、
 
     <img src="https://github.com/osamum/Firstway_to_MSTeamsGraphAPI/blob/master/images/ADD_AccessAllow.png" width="400px">
 
@@ -294,7 +294,7 @@ npm install -g express-generator
 
 1. Visual Studio Code でタブ アプリのプロジェクトから **\/public/index.html** を開きます
 
-2. **title** タグの下に以下のタグを貼り付けます
+2. **title** タグ(\<title\>)の下の行に以下のタグを貼り付けます
 
     ```
     <!--Teams Client JavaScript SDK を参照-->
@@ -441,7 +441,7 @@ Azure Active Dirctory に設定した情報を Teams のアプリ マニフェ�
 
 ## トークンを交換するためのサービスの作成
 
-トークンを交換するための OAuth2.0 On-Behalf-Of フローは Web ブラウザー上のアプリケーションでは実行できないためサーバーサイドで REST API として処理を行います。
+トークンを交換するための OAuth2.0 On-Behalf-Of フローは Web ブラウザー上のアプリケーションでは実行できないので、サーバーサイドに REST API としてアプリケーションを作成し処理を行います。
 
 ここで作成する処理は、v2 Graphエンドポイントに対し、Azure Active Directory に登録されているアプリケーションの情報を使用たパラメーターを POST して結果を受け取るものです。よって、この演習では Node.js を使用しますが同様の HTTP リクエストを送信して結果が受信できるものであれば、開発言語は問いません。
 
@@ -470,7 +470,7 @@ Azure Active Dirctory に設定した情報を Teams のアプリ マニフェ�
         ```
         npm install axios --save
         ```
-3. プロジェクトのルートに **.env** と言う名前のファイルを作成し、以下の内容を記述し、% で囲まれている箇所をアプリを Azure Active Directory に登録した際にメモした内容に置き換え、保存します。
+3. プロジェクトのルートに **.env** と言う名前のファイルを作成します。以下の内容を記述し、% で囲まれている箇所はアプリを Azure Active Directory に登録した際にメモした内容に置き換えて、保存します。
 
     ```
     client_id=%アプリケーション (クライアント) ID%
@@ -521,14 +521,14 @@ Azure Active Dirctory に設定した情報を Teams のアプリ マニフェ�
     ```
     var indexRouter = require('./routes/index');
     var usersRouter = require('./routes/users');
-    //以下のコードを追加して getToken.js の内容を require します
+    //上記↑は既存のコード。以下のコードを追加して getToken.js の内容を require します
     var getTokenRouter = require('./routes/getToken');
     ```
 
     ```
     app.use('/', indexRouter);
     app.use('/users', usersRouter);
-    //以下のコードを追加して作成したモジュールにルーティングします
+    //上記↑は既存のコード。以下のコードを追加して作成したモジュールにルーティングします
     app.use('/getToken', getTokenRouter);
     ```
 
@@ -546,12 +546,12 @@ REST API から返されたトークンを使用して Graph API を呼び出し
 
 1. 演習で使用しているプロジェクトを Visual Studio Code でオープンします
 
-2. /public/index.html を開き、**head** の閉じタグ (\<\/head>)の上に以下のタグを貼り付けます
+2. ファイル **/public/index.html** を開き、**head** の閉じタグ (\<\/head>)の上に以下のタグを貼り付けます
 
     ```
     <script src="javascripts/graph.js"></script>
     ```
-3. キーボードの \[Ctrl\] キーを押下しながら前の手順で貼り付けた script タグの src 属性の **"javascripts/graph.js"** をマウスでクリックします。
+3. キーボードの \[Ctrl\] キーを押下しながら、前の手順で貼り付けた script タグの src 属性の **"javascripts/graph.js"** をマウスでクリックします。
 
     「ファイルを開くことができません」とメッセージが表示されるので、同メッセージボックスの \[**ファイルを作成**\] ボタンをクリックします。
 
@@ -635,32 +635,19 @@ Teams の AppStudio からタブ アプリケーションを再度インスト�
 
 <img src="images/21Sep_ssoTabResult.png" width="500px">
 
+ここまでの手順で Teams タブ アプリの SSO 機能の実装方法は完了です。
+
+Microsoft Graph Toolkit を向けに Teams タブアプリの SSO を実装する場合は以下のドキュメントを参照してください。
+
+- [**Build a Microsoft Teams SSO tab with the Microsoft Graph Toolkit**](https://docs.microsoft.com/en-us/graph/toolkit/get-started/build-a-microsoft-teams-sso-tab?tabs=unpkg%2CHTML)
+
+(※)上記のドキュメントの URL 中の **en-us** を **ja-jp** に変更することで日本語ドキュメントが表示されますが、機械翻訳の精度がいまひとつのため英字ドキュメントを参照することをおすすめします、
 
 <br>
 
-## プロジェクトのデバッグ実行
+## 参考
 
-Visual Studio Code から、プロセスに Node.js のデバッガをアタッチしてサーバーサイド(REST API)側をデバッグ実行することができます。
-
-手順は以下のとおりです。
-
-1. Visual Studio Code の左側の \[エクスプローラー\] ビューで、index.js 等のサーバーサイドで動作するコードのファイル中のデバッグ箇所にブレークポイントを設定します
-
-2. 画面左のメニューで \[**実行とデバッグ(Ctrl + Shift + D)**\] メニューボタン (※虫と再生ボタンが重なったデザインのアイコン)をクリックし、表示されたブレード上の\[**実行とデバッグ**\] ボタンをクリックします
-
-    <img src="images/21Sep_Run&Debug.png" width="250px">
-
-3. アタッチするデバッガーのリストがドロップダウンリストに表示されるので、**Node.js** を選択します
-
-    <img src="images/21Sep_ChooseDebuger.png" width="500px">
-
-上記の手順でデバッガがアタッチされたホストプロセスが起動し、Node.js アプリケーションのデバッグ実行が可能になります。
-
-<img src="images/21Sep_BreakingVSCode.png">
-
-なお、Teams にロードされたタブ アプリ化された Web ページのデバッグ方法については以下を参考にしてください。
-
-
+- [**タブのシングル サインオン (SSO) のサポート**](https://docs.microsoft.com/ja-jp/microsoftteams/platform/tabs/how-to/authentication/auth-aad-sso)
 
 
 ## 目次
