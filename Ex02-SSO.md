@@ -414,7 +414,7 @@ Azure Active Dirctory に設定した情報を Teams のアプリ マニフェ�
     |項目|設定値|
     |---|---|
     | AAD App ID | Azure Active Directory に登録した際にメモした**アプリケーション (クライアント) ID**|
-    | Single-Sign-On | Azure Active Directory に登録する際、**\[API の公開\]で指定した URI** (api://ngrok が生成したドメイン名/AppIDのGUID)/access_as_user|
+    | Single-Sign-On | Azure Active Directory に登録する際、**\[API の公開\]で指定した URI** (api://ngrok が生成したドメイン名/AppIDのGUID)|
 
     実際の画面は以下のとおりです。
 
@@ -433,7 +433,9 @@ Azure Active Dirctory に設定した情報を Teams のアプリ マニフェ�
 
 ここまでの手順でクライアント側のアプリケーション コードの作成と、Azure Active Directory の設定は完了です。
 
-うまく行かない場合は[**それぞれのファイルのサンプル**](samples/ssoTab/01)の内容を確認してください。
+うまく行かない場合は以下のドキュメントを参考にデバッグするか[**それぞれのファイルのサンプル**](samples/ssoTab/01)の内容を確認してください。
+
+- [**Teams タブ アプリとしてロードされた Web ページのデバッグ**](opt/JS_vscode-dbg.md)
 
 次のステップでは Teams Client JavaScript SDK の機能で入手したトークンを、他のスコープを持った Graph API (今回はメールの一覧を取得する) を使用可能なトークンに交換するための REST API を作成します。
 
@@ -636,6 +638,10 @@ Teams の AppStudio からタブ アプリケーションを再度インスト�
 <img src="images/21Sep_ssoTabResult.png" width="500px">
 
 ここまでの手順で Teams タブ アプリの SSO 機能の実装方法は完了です。
+
+上手くいかない場合は以下のドキュメントを参考にデバッグを行うか、各ファイルの[サンプル](samples/ssoTab/02)を参考にしてください。
+
+- [**Visual Studio Code での Node.js アプリケーションのデバッグ**](opt/JS_vscode-dbg.md#visual-studio-code-%E3%81%A7%E3%81%AE-nodejs-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0)
 
 Microsoft Graph Toolkit を向けに Teams タブアプリの SSO を実装する場合は以下のドキュメントを参照してください。
 

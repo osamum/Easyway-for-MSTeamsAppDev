@@ -32,14 +32,20 @@ Microsoft Teams のタブ アプリとして追加された Web ページ内の�
 
     <img src="../images/21Sep_DevTool_Break.png" width="500px">
 
-## その他 
+    もし、ソースコードを変更してもページに変更内容が反映されない場合は、開発者ツールのメニュー \[**ネットワーク**\] をクリックし、\[**キャッシュを無効にする**\] にチェックがついているかを確認してください。
 
-もし、ソースコードを変更してもページに変更内容が反映されない場合は、開発者ツールのメニュー \[**ネットワーク**\] をクリックし、\[**キャッシュを無効にする**\] にチェックがついているかを確認してください。
+    <img src="../images/21Sep_DisableCach.png" width="500px">
 
-<img src="../images/21Sep_DisableCach.png" width="500px">
+
+ここまでの手順で Web ブラウザーの開発者ツールを使用してタブ アプリとしてロードされた Web ページのデバッグができるようになりました。
+
+Microsoft Edge の開発者ツールについての詳細については以下のドキュメントをご参照ください。
+
+- [**Microsoft Edge開発者ツールの概要**](https://docs.microsoft.com/ja-jp/microsoft-edge/devtools-guide-chromium/)
 
 
 <br>
+
 
 # Visual Studio Code での Node.js アプリケーションのデバッグ
 
@@ -59,4 +65,8 @@ Visual Studio Code から、プロセスに Node.js のデバッガをアタッ�
 
 上記の手順でデバッガがアタッチされたホストプロセスが起動し、Node.js アプリケーションのデバッグ実行が可能になります。
 
-<img src="../images/21Sep_BreakingVSCode.png">
+<img src="../images/21Sep_BreakingVSCode.png"  width="600px">
+
+Visual Studio Code を使用した Node.js アプリケーションの開発とデバッグ方法についての詳細は、以下のドキュメントをご参照ください。
+
+- [**Visual Studio Code を使用して Node.js の開発とデバッグを行う方法**](https://docs.microsoft.com/ja-jp/azure/developer/javascript/how-to/with-visual-studio-code/install-run-debug-nodejs)
