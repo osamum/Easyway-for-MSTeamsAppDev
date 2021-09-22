@@ -1,11 +1,11 @@
 # タブのシングルサインオン (SSO)
-Microsoft Teamsを使用する際、ユーザーは Microsoftアカウントで Microsoft Teamsにサインインします。デスクトップやモバイルのクライアントでTeamsタブやタスクモジュールを認証するためのシングルサインオンを可能にすることで、アプリ毎にサインインする必要が無くなり、機能的な統一感が保たれるだけでなくパフォーマンスとロードタイムが向上します。
+Microsoft Teams を使用する際、ユーザーは Microsoft アカウントで Microsoft Teams にサインインします。デスクトップやモバイルのクライアントでTeams タブやタスクモジュールを認証するためのシングルサインオンを可能にすることで、アプリ毎にサインインする必要が無くなり、機能的な統一感が保たれるだけでなくパフォーマンスとロードタイムが向上します。
 
-##　この演習で実装するシングルサインオンの仕組み
+## この演習で実装するシングルサインオンの仕組み
 
-Microsoft Teams のタブアプリでは、Azure Active Directory とアプリ マニフェストを適切に設定し、タブ アプリのコードから [Teams Client JavaSctipt SDK](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/?view=msteams-client-js-latest) の [getAuthToken メソッド](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/microsoftteams.authentication?view=msteams-client-js-latest#getAuthToken_AuthTokenRequest_)を呼び出すことでユーザーのメール アドレスなど情報を抽出するみとのできるアクセストークンを取得できます。
+Microsoft Teams のタブ アプリでは、Azure Active Directory とアプリ マニフェストを適切に設定し、タブ アプリのコードから [Teams Client JavaSctipt SDK](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/?view=msteams-client-js-latest) の [getAuthToken メソッド](https://docs.microsoft.com/en-us/javascript/api/@microsoft/teams-js/microsoftteams.authentication?view=msteams-client-js-latest#getAuthToken_AuthTokenRequest_)を呼び出すことでユーザーのメール アドレスなど情報を抽出することのできるアクセストークンを取得できます。
 
-しかし、getAuthToken メソッドで取得できるアクセス トークンは、ユーザーレベルのGraph APIパーミッション（email、profile、offline_access、OpenId）しかサポートしていないため、User.ReadやMail.Readなど、他のGraphスコープへのアクセスが必要な場合は、このトークンを必要なスコープを含むトークンに交換する必要があります。
+しかし、getAuthToken メソッドで取得できるアクセス トークンは、ユーザーレベルの Graph API パーミッション（email、profile、offline_access、OpenId）しかサポートしていないため、User.Read や Mail.Read など、他の Graph スコープへのアクセスが必要な場合は、このトークンを必要なスコープを含むトークンに交換する必要があります。
 
 この演習では、Teams Client JavaSctipt SDK を使用して入手したトークンを、他のGraph API (の Mail.Read)を呼び出すことのできるスコープを持ったトークンに交換し、一覧を取得する機能を実装します。
 
@@ -21,7 +21,7 @@ Microsoft Teams のタブアプリでは、Azure Active Directory とアプリ �
 
 同タブ アプリ内の JavaScript コードから Teams JavaScript Clienrt SDK の getAuthToken メソッドを呼び出してアクセス トークンを取得し、それを OAuth2.0 の [**On-Behalf-Of(代理) フロー**](https://docs.microsoft.com/ja-jp/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)を使用して異なるスコープを持ったトークンに交換します。
 
-この代理フロー処理はクライアント側の JavaScript では行えないため簡単な REAST API を作成してこれを呼び出して行い、交換後のアクセストークンを使用して Graph API が呼び出せることを確認します。
+この代理フロー処理はクライアント側の JavaScript では行えないため、簡単な REAST API を作成してこれを呼び出して行い、交換後のアクセストークンを使用して Graph API が呼び出せることを確認します。
 
 具体的には以下のような順序で演習を進めます。
 
@@ -38,7 +38,7 @@ Microsoft Teams のタブアプリでは、Azure Active Directory とアプリ �
 
 トークンを交換するための REST API の開発は Microsoft ID Platform のエンドポイントに対し適切な HTTP リクエストを送信できればどのような開発言語でもかまいませんが、今回はクライアント サイドのコードと同じ JavaScript が使用できる Node.js を使用します。
 
-Web のフレームワークとして [express](http://expressjs.com/ja/) を使用しますので以下のコマンドを実行してどのディレクトリからでも実行できるようにしておくか、特定のディレクトでのみ使用したい場合は、目的のディレクトリで -g を指定せずにコマンドをします。
+Web アプリケーション開発のフレームワークとして [express](http://expressjs.com/ja/) を使用しますので以下のコマンドを実行してどのディレクトリからでも実行できるようにしておくか、特定のディレクトでのみ使用したい場合は、目的のディレクトリで -g を指定せずにコマンドをします。
 
 ```
 npm install -g express
@@ -57,7 +57,9 @@ npm install -g express-generator
 
 演習のためのシンプルなタブ アプリを作成します。
 
-今回の演習で使用するアプリは静的な html ファイルなので、http-server (開発用の Web サーバー) でホストして確認することができますが、今回はトークンを交換するための REST API も作成するので Express を使用して Node.js プロジェクトを作成し、それを実行してタブアプリの html ファイルをホストします。
+今回の演習で使用するアプリは静的な html ファイルなので、http-server (開発用の Web サーバー) でホストすることができますが、今回はトークンを交換するための REST API も作成するので Express を使用して Node.js プロジェクトを作成し、それを実行してタブアプリの html ファイルをホストします。
+
+(※) express-generatort が生成するプロジェクトはサーバーサイドで HTML を描画するテンプレートエンジンとして [jade](https://jade-lang.com/) をサポートしていますが、今回の演習ではサーバーサイドとクライアントサイドの処理を別けて理解していただく目的でクライアントサイドは静的 html ファイルを使用します。
 
 プロジェクト作成からパーソナルタブの追加までの具体的な手順は以下のとおりです。
 
@@ -85,7 +87,7 @@ npm install -g express-generator
     npm start
     ```
 
-    Web ブラウザーのアドレスバーに以下のアドレスを入力します
+    Web ブラウザーのアドレスバーに以下のアドレスを入力してブラウズします
 
     ```
     http://localhost:3000/
@@ -143,12 +145,14 @@ npm install -g express-generator
     https://ngrok が返したドメイン名/index.html
     ```
 
-    ngrok が返したドメイン名は、以降の手順で頻繁に使用するのでテキストエディタに貼り付けるなどして保持してください。
+    ngrok が返したドメイン名は、**以降の手順で頻繁に使用するのでテキストエディタに貼り付けるなどして保持してください**。
 
     なお、ngrok は全ての演習の内容が完了するまで**終了しないでください。**(ドメイン名が変わってしまうので)
 
 
-10. 前の手順で確認した ngrok でトンネリングされた URL を使用し、[**演習 2-1 : パーソナル タブの追加**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E9%9D%99%E7%9A%84-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0) の手順に従い、手元の環境でホストされている index.html を Teams のパーソナルタブ アプリとして追加してください
+10. 前の手順で確認した ngrok でトンネリングされた URL を使用し、[**演習 2-1 : パーソナル タブの追加**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E9%9D%99%E7%9A%84-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0) の手順に従い、手元の環境でホストされている index.html を Teams のパーソナルタブ アプリとして追加し、正しく表示されるか確認してください。
+
+なお、ページに表示されている\[ログオン\]ボタンはこの時点では動作しません。
 
     
 ## Azure Active Directory への登録
@@ -183,7 +187,7 @@ npm install -g express-generator
 
 8. \[登録] ボタンをクリックします。
 
-9. 画面左のメニューの \[概要\] をクリックし、表示された画面で **\[アプリケーション (クライアント)\]** と　**\[ディレクトリ (テナント) ID\]**　の内容をコピーし、テキストファイルなどにメモします
+9. 画面左のメニューの \[概要\] をクリックし、表示された画面で **\[アプリケーション (クライアント)\]** と　**\[ディレクトリ (テナント) ID\]**　の内容をコピーし、**テキストファイルなどにメモします**
 
     <img src="images/AAD_ClientID.png" width="600px">
 
@@ -233,7 +237,7 @@ npm install -g express-generator
 
 18. 遷移した画面で \[**+ アクセス許可の追加**] をクリックし、
 
-    <img src="https://github.com/osamum/Firstway_to_MSTeamsGraphAPI/blob/master/images/ADD_AccessAllow.png" width="400px">
+    <img src="https://github.com/osamum/Firstway_to_MSTeamsGraphAPI/blob/master/images/ADD_AccessAllow.png" width="500px">
 
     画面右に表示されたブレード内の \[Microsoft Graph]-\[委任されたアクセス許可]ボックスをクリックし、
     
@@ -249,15 +253,15 @@ npm install -g express-generator
 
     \[+ アクセス許可の追加] の右隣にある\[**(ドメイン名) に管理者の同意を与えます**] をクリックし、同意を与えます。
 
-    <img src="images/21Sep_APIAccessAllow_AAD.png" width="600px">
-
     (※)もし、\[(ドメイン名) に管理者の同意を与えます]がグレーアウトしていてクリックできない場合は、管理者権限をもつアカウントで作業するか、別途 Azure Active Directory テナントを作成し、そちらで作業する必要があります。
     
     リストされたアクセス許可の \[状態] に緑色のアイコンが表示されるのを確認します
 
+    <img src="images/21Sep_APIAccessAllow_AAD.png" width="600px">
+
 19. 画面左のメニューで \[**認証**] をクリックします
 
-20. 項目\[暗黙的な許可およびハイブリッド フロー]で以下のチェックボックスにチェックをつけ、画面上部の \[保存] をクリックします
+20. 項目\[**暗黙的な許可およびハイブリッド フロー**]で以下のチェックボックスにチェックをつけ、画面上部の \[保存] をクリックします
 
     - **アクセス トークン (暗黙的なフローに使用)**
     - **ID トークン (暗黙的およびハイブリッド フローに使用)**
@@ -443,9 +447,9 @@ Azure Active Dirctory に設定した情報を Teams のアプリ マニフェ�
 
 ## トークンを交換するためのサービスの作成
 
-トークンを交換するための OAuth2.0 On-Behalf-Of フローは Web ブラウザー上のアプリケーションでは実行できないので、サーバーサイドに REST API としてアプリケーションを作成し処理を行います。
+トークンを交換するための OAuth2.0 On-Behalf-Of フローは Web ブラウザー上のアプリケーションでは実行できないので、サーバーサイドに REST API としてアプリケーションを作成し処理を行います。よって、この演習では Node.js を使用しますが同様の HTTP リクエストを送信して結果が受信できるものであれば、開発言語は問いません。
 
-ここで作成する処理は、v2 Graphエンドポイントに対し、Azure Active Directory に登録されているアプリケーションの情報を使用たパラメーターを POST して結果を受け取るものです。よって、この演習では Node.js を使用しますが同様の HTTP リクエストを送信して結果が受信できるものであれば、開発言語は問いません。
+ここで作成する処理は、v2 Graphエンドポイントに対し、Azure Active Directory に登録されているアプリケーションの情報を使用したパラメーターを POST して結果を受け取るものです。
 
 具体的な処理内容については以下のドキュメントの内容を参照してください。
 
@@ -461,18 +465,20 @@ Azure Active Dirctory に設定した情報を Teams のアプリ マニフェ�
     
     メニュー \[**ターミナル**\] - \[**新しいターミナル**\] をクリックし、表示されたターミナル ウィンドウで以下のそれぞれのコマンドを実行します。
 
-    - 環境変数を使用するための [**dotenv**](https://www.npmjs.com/package/dotenv) をインストールします。コマンドは以下です。
+    - 環境変数を使用するためのモジュール [**dotenv**](https://www.npmjs.com/package/dotenv) をインストールします。コマンドは以下です。
 
         ```
         npm install dotenv --save
         ```
 
-    - HTTP リクエストを送受信するための [**axios**](https://www.npmjs.com/package/axios) をインストールします。コマンドは以下です。
+    - HTTP リクエストを送受信するためのモジュール [**axios**](https://www.npmjs.com/package/axios) をインストールします。コマンドは以下です。
     　
         ```
         npm install axios --save
         ```
-3. プロジェクトのルートに **.env** と言う名前のファイルを作成します。以下の内容を記述し、% で囲まれている箇所はアプリを Azure Active Directory に登録した際にメモした内容に置き換えて、保存します。
+3. プロジェクトのルートに **.env** と言う名前のファイルを作成します。
+
+    以下の内容を記述し、% で囲まれている箇所はアプリを Azure Active Directory に登録した際にメモした内容に置き換えて、保存します。
 
     ```
     client_id=%アプリケーション (クライアント) ID%
@@ -633,7 +639,7 @@ REST API から返されたトークンを使用して Graph API を呼び出し
 
 以上で REST API で交換されたトークンを受け取り Graph API を呼び出してメールの一覧を取得するコードの追加は完了です。
 
-Teams の AppStudio からタブ アプリケーションを再度インストールしなおし、タブ内の \[**ログオン**\] ボタンをクリックするとメールの一覧が表示されます。
+Teams の AppStudio からタブ アプリを再度インストールしなおし、タブ内の \[**ログオン**\] ボタンをクリックするとメールの一覧が表示されます。
 
 <img src="images/21Sep_ssoTabResult.png" width="500px">
 
@@ -648,6 +654,19 @@ Microsoft Graph Toolkit を向けに Teams タブアプリの SSO を実装す�
 - [**Build a Microsoft Teams SSO tab with the Microsoft Graph Toolkit**](https://docs.microsoft.com/en-us/graph/toolkit/get-started/build-a-microsoft-teams-sso-tab?tabs=unpkg%2CHTML)
 
 (※)上記のドキュメントの URL 中の **en-us** を **ja-jp** に変更することで日本語ドキュメントが表示されますが、機械翻訳の精度がいまひとつのため英字ドキュメントを参照することをおすすめします、
+<br>
+
+## 【重要】アクセス トークンの扱いについて
+
+演習ではアクセストークンの取得状況を分かり易く説明するためにアクセストークンを画面に表示したり、クライアント サイドのコードで Graph API を呼び出していますが、この方法は実際のアプリケーション開発にはお勧めできません。
+
+なぜならば、ブラザー上で動作する Web アプリケーションはユーザーが開発者ツールを使ってアプリケーションの内部動作が確認可能であるためアクセストークンを不正に取得され、意図しない Graph API などを直接使用される可能性があります。
+
+たしかに、Azure Active Directory の設定でトークンのスコープを絞ることができますが、とはいえアプリケーションが想定していない機能の呼び出しをユーザーが行えることはセキュリティリスクに繋がらないとはいえません(※)。
+
+(※)もちろん、部門内のようなクローズド環境での使用で、最低限の読み取りしか許可しないようなものはこの限りではありません。
+
+よって、実際にアプリケーションを開発する際には、Web ブラウザー上のアプリケーションで直接アクセストークンを扱うようなことは極力避け、Graph API などの呼び出しはサーバーサイドのロジックで行い
 
 <br>
 
@@ -655,6 +674,7 @@ Microsoft Graph Toolkit を向けに Teams タブアプリの SSO を実装す�
 
 - [**タブのシングル サインオン (SSO) のサポート**](https://docs.microsoft.com/ja-jp/microsoftteams/platform/tabs/how-to/authentication/auth-aad-sso)
 
+<br>
 
 ## 目次
 0. [**Microsoft Teams アプリケーション開発について**](Intro.md)
