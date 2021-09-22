@@ -1,5 +1,14 @@
 # Change log
 
+## September 23 2021
+
+- [**タブのシングルサインオン (SSO)**](Ex02-SSO.md) をシンプルな方法で実装するハンズオン資料を追加
+- Teams アプリ開発関連の以下のデバッグ方法について記述
+
+    * [**Teams タブ アプリとしてロードされた Web ページのデバッグ**](opt/JS_vscode-dbg.md#teams-%E3%82%BF%E3%83%96-%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A8%E3%81%97%E3%81%A6%E3%83%AD%E3%83%BC%E3%83%89%E3%81%95%E3%82%8C%E3%81%9F-web-%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0)
+
+    * [**Visual Studio Code での Node.js アプリケーションのデバッグ**](opt/JS_vscode-dbg.md#visual-studio-code-%E3%81%A7%E3%81%AE-nodejs-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0)
+
 ## September 06 2021
 
 * ローカルの開発環境で動作しているボットのサービスを [**Azure Bot**](https://docs.microsoft.com/ja-jp/azure/bot-service/abs-quickstart?view=azure-bot-service-4.0) に登録する手順も含めた Microsoft Teams 用 開発者ポータルを使用したボットの追加方法を追記

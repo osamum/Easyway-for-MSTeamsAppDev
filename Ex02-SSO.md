@@ -412,11 +412,12 @@ Azure Active Dirctory に設定した情報を Teams のアプリ マニフェ�
 
     <img src="images/21SepDomain&Permission.png" width="300px">
 
-4. 表示された画面で、\[**AAD App ID**] と \[**Single-Sign-On**\] の項目のみ以下のように設定します
+4. 表示された画面で、\[**Domains from your tabs**\] 、 \[**AAD App ID**] 、\[**Single-Sign-On**\] 、それぞれの項目を以下のように設定します
 
 
     |項目|設定値|
     |---|---|
+    |Domains from your tabs|ngrok が生成したドメイン名|
     | AAD App ID | Azure Active Directory に登録した際にメモした**アプリケーション (クライアント) ID**|
     | Single-Sign-On | Azure Active Directory に登録する際、**\[API の公開\]で指定した URI** (api://ngrok が生成したドメイン名/AppIDのGUID)|
 
@@ -715,8 +716,7 @@ Microsoft Graph Toolkit を向けに Teams タブアプリの SSO を実装す�
     * [**検索機能の実装**](Ex04.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E6%8B%A1%E5%BC%B5---wikipedia-%E6%A4%9C%E7%B4%A2%E6%A9%9F%E8%83%BD%E3%81%AE%E5%AE%9F%E8%A3%85)
     * [**操作機能の実装**](Ex04.md#%E3%82%BF%E3%82%B9%E3%82%AF-2--%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E6%8B%A1%E5%BC%B5---%E6%93%8D%E4%BD%9C%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AB%E3%82%88%E3%82%8B%E5%A4%96%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E9%80%A3%E6%90%BA)
     
-5. [**タブとボットのシングルサインオン**](Ex05.md)
-6. [**コネクタ**](Ex06.md)
+5. [**コネクタ**](Ex06.md)
     * [**受信 Webhook を利用したチャネルへの通知**](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/master/Ex06.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--incomming-webhook-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%B8%E3%81%AE%E9%80%9A%E7%9F%A5)
     * [**送信Webhook を利用した外部サービスの呼び出し**](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/master/Ex06.md#%E3%82%BF%E3%82%B9%E3%82%AF-2--%E9%80%81%E4%BF%A1outgoing-webhook-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E5%A4%96%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97)
 
