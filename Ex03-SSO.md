@@ -1,9 +1,10 @@
 # Teams ボットのシングル　サインオン (SSO)
 Azure Active Directory (AAD) のシングル サインオン (SSO) 認証を使用すると、サインインが必要なボットを使用する際の資格情報の入力を省略することができ、ユーザーにシームレスな利用体験を提供できます。
 
-この演習では、ボットアプリに AAD を使用した SSO 機能を実装します。
+この演習では Teams ボットのシングル サインオン (SSO) に必要な設定を Azure Active Directory、Azure ボット、アプリ マニフェストに行い、 GitHub に用意されている[サンプル プロジェクト](https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-conversation-sso-quickstart/js)を実行し、動作を確認します。
+(※)
 
-具体的には、Teams ボットのシングル サインオン (SSO) に必要な設定を Azure Active Directory、Azure ボット、アプリ マニフェストに行い、 GitHub に用意されている[サンプル プロジェクト](https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-conversation-sso-quickstart/js)を実行し、動作を確認します。
+(※) Echo ボットのようなシンプルなボット アプリに Teams の SSO の機能をゼロから実装するとなるとコーディング量が非常に多くなるためサンプルアプリのコードを適宜利用することをお勧めします。 
 
 なお、この演習には Microsoft Azure のサブスクリプションが必要です。
 
@@ -25,30 +26,40 @@ Azure Active Directory (AAD) のシングル サインオン (SSO) 認証を使�
 
     (※) 開発用 Office 365 サブスクリプションで使用しているアカウントで[Azure ポータル](https://portal.azure.com)に ログインし、なんからの Azure のリソースを作成しようとすると、試用アカウント作成のリンクか案内されるのでその案内に従ってください。
 
-## シンプルなボットアプリケーション作成
+<br />
 
-最初にシンプルなボット アプリケーションを作成し、ngrok を使用して作成した開発環境のボット サービスに外部からアクセス可能な状態にします。
+## サンプル プロジェクトの入手
 
-手順は以下のとおりです。
+SSO の機能が実装された Teams ボットアプリのサンプル プロジェクトを取得します。
 
-1. 以下のドキュメントの内容にしたがい **Echo Bot** を作成します。なお、開発言語は JavaScript を使用します
+以下のリポジトリを Clone するか、zip ファイルとしてダウンロードします。 
 
-    * [**ボットの作成**](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-service-quickstart-create-bot?view=azure-bot-service-4.0&tabs=javascript%2Cvs)
+* [**OfficeDev/Microsoft-Teams-Samples**](https://github.com/OfficeDev/Microsoft-Teams-Samples)
 
+<img src="images/21Nov_CloneRepo.png" width="500px">
 
-2. あとの手順でボット サービスのエンドポイントを指定する必要があるので、以下のコマンドで ngrok を実行し、生成されたドメイン名をメモします
+クローンしたフォルダ、あるいは zip ファイルから以下のフォルダの内容を作業用フォルダにコピーしてください。
 
-    ```
-    ngrok http 3978 --host-header=localhost
-    ```
+```
+Microsoft-Teams-Samples-main\samples\bot-conversation-sso-quickstart\js
+```
 
-    なお、作成したボット プロジェクトは App ID とシークレットを取得したあとに起動するので、この時点では動作させなくてかまいません。 
+コピー先の作業用のフォルダを Visual Studio Code で開き、ターミナルウィンドウで以下のコマンドを実行して依存関係のあるモジュールをインストールします。
+
+```
+npm install
+```
+
+ここまでの手順でサンプル　プロジェクトの作業準備は完了です。
+
+<br />
+
 
 
 
 ## Azure ボットの作成
 
-Azure 上に Azure Bot のインスタンスを作成し、紐づけられた Azure Active Directory のアプリケーションのエントリーに SSO で必要になる設定を行います。
+Azure 上に Azure Bot のインスタンスを作成し、紐づけられた Azure Active Directory のアプリのエントリーに SSO で必要になる設定を行います。
 
 具体的な手順は以下のとおりです。
 
@@ -85,11 +96,13 @@ Azure 上に Azure Bot のインスタンスを作成し、紐づけられた Az
 
 7. 作成した Azure Bot の**概要**画面に遷移するので、画面左のメニューより \[**構成**\]をクリックします
 
-8. \[**構成**\] の画面に遷移するので、\[**メッセージング エンドポイント**\] に以下の URL を設定します
+8. \[**構成**\] の画面に遷移するので、\[**メッセージング エンドポイント**\] に以下の URL を設定します (※)
 
     ```
     https://ngrokが生成したドメイン名/api/messages
     ```
+    (※) このタイミングではまだプロジェクトがホストされていないので仮の URL でも良いですし、ここで ngrok を起動しておいても可です。
+
 9. 同画面の \[**Microsoft App ID**\] の下の GUID をコピーしてテキストエディタなどに貼り付けてメモします
 
 10. \[**Microsoft App ID**\] の隣にある \[**管理**\] リンクをクリックします
@@ -309,6 +322,7 @@ Teams ボット アプリの基本的な登録が完了したら、以下の手�
     ```
     token.botframework.com
     ```
+    <img src="images/21Nov_manifest_AddDomain.png" width="400px">
 
 以上でマニフェストへのボットアプリ用 SSO の設定は完了です。 
 
