@@ -186,7 +186,7 @@ Teams とボット アプリケーションとの SSO に必要なAzure Active D
     api://{AppID} の形式でアプリケーションID の URI が生成されるので、App ID の前に **botid-** を記述して以下の形式の URI を設定し \[**保存**\] ボタンをクリックします
 
     ```
-    api://botid-AppID 
+    api://botid-ボットの App ID 
     ```
     **この URI はアプリ マニフェストの設定で使用するのでメモ帳などに貼り付けて保持します。**
 
@@ -264,11 +264,11 @@ Azure Bot インスタンスに OAuth 接続の設定を追加します。
     | サービス プロバイダー * | **V2 Azure Active Directory**|
     | Client id *| メモしてある App ID|
     | Client secret *| メモしてあるクライアント シークレット|
-    | Token Exchange URL | Teams Web アプリケーション用|
+    | Token Exchange URL | メモしてあるアプリケーションID の URI (api://botid-～)|
     | Tenant ID | **common**|
-    | スコープ | **User.Read** |
+    | スコープ | **Mail.Read openid profile User.Read** |
 
-    ここまでの手順で OAuth 接続の追加は完了していますが、正しく動作しているか確認するには以降の手順を実行してください。
+    ここまでの手順で OAuth 接続の追加は完了していますが、正しく動作しているか確認したい場合には以降の手順を実行してください。
 
 4. \[**構成**\] 画面内の \[**OAuth 接続設定の追加**\] ボタンの上に、こまでの手順で追加したOAuth 接続の名前 (**TeamsBotSSO_Connect**) がリストされているのでクリックします
 
@@ -292,14 +292,15 @@ Azure Bot インスタンスに OAuth 接続の設定を追加します。
 
 ここからは、ボットアプリケーションに SSO に必要となるコードを追加し、Teams のアプリマニフェストに必要な設定を追加します。
 
+<br />
 
 ## アプリマニフェストへの設定の追加
 
 Teams ボットのアプリ マニフェストに SSO に必要な設定を追加します。
 
-まず最初に、[**Microsoft Teams 用 開発者ポータルを使用した Teams へのボットの追加**](Ex03.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0) の内容を参考に、基本的な Teams ボット アプリの登録を完了してください。
+まず最初に、[**Microsoft Teams 用 開発者ポータルを使用した Teams アプリケーションの登録**](Ex01.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E3%81%AE%E4%BD%BF%E7%94%A8) の内容を参考に、基本的な Teams アプリの登録を完了してください。
 
-Teams ボット アプリの基本的な登録が完了したら、以下の手順で作業を行います。
+Teams アプリの基本的な登録が完了したら、以下の手順で作業を行います。
 
 1. [開発者ポータル](https://dev.teams.microsoft.com/) にログインし、画面左のメニューより \[**Apps**\] メニューをクリックします
 
@@ -315,14 +316,14 @@ Teams ボット アプリの基本的な登録が完了したら、以下の手�
     api://botid-ボットの Application ID
     ```
 
-    <img src="images/21Nov_Manifest_SSO.png" width="400px">
+    <img src="images/21Nov_Manifest_SSO.png" width="500px">
 
 5. 画面左のメニューより \[**Domains**\] をクリックし、表示れた画面の \[**+Add a domain**\] をクリックし、表示されたダイアログボックスで以下の URL を指定し \[**Add**\] ボタンをクリックします
 
     ```
     token.botframework.com
     ```
-    <img src="images/21Nov_manifest_AddDomain.png" width="400px">
+    <img src="images/21Nov_manifest_AddDomain.png" width="500px">
 
 以上でマニフェストへのボットアプリ用 SSO の設定は完了です。 
 
