@@ -4,7 +4,7 @@ Azure Active Directory (AAD) のシングル サインオン (SSO) 認証を使�
 この演習では Teams ボットのシングル サインオン (SSO) に必要な設定を Azure Active Directory、Azure ボット、アプリ マニフェストに行い、 GitHub に用意されている[サンプル プロジェクト](https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-conversation-sso-quickstart/js)を実行し、動作を確認します。
 (※)
 
-(※) Echo ボットのようなシンプルなボット アプリに Teams の SSO の機能をゼロから実装するとなるとコーディング量が非常に多くなるためサンプルアプリのコードを適宜利用することをお勧めします。 
+(※) Echo ボットのようなシンプルなボット アプリに Teams の SSO の機能をゼロから実装するとなると、コーディング量が非常に多くなるためサンプルアプリのコードを適宜利用することをお勧めします。 
 
 なお、この演習には Microsoft Azure のサブスクリプションが必要です。
 
@@ -107,7 +107,7 @@ Azure 上に Azure Bot のインスタンスを作成し、紐づけられた Az
 
 10. \[**Microsoft App ID**\] の隣にある \[**管理**\] リンクをクリックします
 
-    <img src="images/21Nov_AzureBot_AppID.png" width="400px">
+    <img src="images/21Nov_AzureBot_AppID.png" width="600px">
 
 11. Azure Active Directory の \[**証明書とシークレット**\] 画面に遷移するので、\[**+新しいクライアント シークレット**\]をクリックします (※)
 
@@ -119,7 +119,7 @@ Azure 上に Azure Bot のインスタンスを作成し、紐づけられた Az
 
     **なお、このシークレットの値は生成直後でないとコピーすることができませんので必ずこのタイミングで取得しておいてください。**
 
-    <img src="images/21Nov_ClientSecret.png" width="400px">
+    <img src="images/21Nov_ClientSecret.png" width="600px">
 
 14. ローカル開発環境のボット プロジェクト内のファイル **.env** を開き、ここまでの手順でメモした App ID とシークレットを使用して内容を以下のように書き換えます
 
@@ -128,7 +128,7 @@ Azure 上に Azure Bot のインスタンスを作成し、紐づけられた Az
     MicrosoftAppPassword=メモしておいたクライアント シークレット
     ```
 
-    ターミナル画面で以下のコマンドを実行してボット プロジェクトを起動します
+    ローカル開発環境のターミナル画面で以下のコマンドを実行してボット プロジェクトを起動します
 
     ```
     npm start
@@ -142,7 +142,7 @@ Azure 上に Azure Bot のインスタンスを作成し、紐づけられた Az
 
 18. \[**Microsoft Teams を構成**\] 画面が表示されるので \[**保存**\] ボタンをクリックします
 
-    <img src="images/21Nov_AzureBot_AddChannel.png" width="300px">
+    <img src="images/21Nov_AzureBot_AddChannel.png" width="400px">
 
 19. 画面左の \[**Web チャットでテスト**\] メニューをクリックします
 
@@ -161,7 +161,7 @@ Teams とボット アプリケーションとの SSO に必要なAzure Active D
 
 手順は以下のとおりです。
 
-1. Azure ポータルにて、作成した Azure Bot の\[**構成**\] 画面を表示し、 \[**Microsoft App ID**\] の隣にある \[**管理**\] リンクをクリックします
+1. Azure ポータルにて、作成した Azure Bot インスタンスの\[**構成**\] 画面を表示し、 \[**Microsoft App ID**\] の隣にある \[**管理**\] リンクをクリックします
 
 2. Azure Active Directory の \[**証明書とシークレット**\] 画面に遷移するので、左側のメニューから \[**認証**\] をクリックします
 
@@ -177,16 +177,16 @@ Teams とボット アプリケーションとの SSO に必要なAzure Active D
 
     \[**アクセス トークン (暗黙的なフローに使用)**\]、\[**ID トークン (暗黙的およびハイブリッド フローに使用)**\] チェックボックスにチェックをつけ \[**構成**\] ボタンをクリックします
 
-    <img src="images/21Nov_AAD_WebCfg.png" width="300px">
+    <img src="images/21Nov_AAD_WebCfg.png" width="400px">
 
 5. 画面左のメニューで \[**API の公開**\] を選択し、遷移した画面で \[**設定**\]リンクをクリックすると、
     
-    <img src="images/21Nov_PubAPI_cnfg.png" width="300px">
+    <img src="images/21Nov_PubAPI_cnfg.png" width="400px">
     
-    api://{AppID} の形式でアプリケーションID の URI が生成されるので、アプリケーション ID の前に **botid-** を記述して以下の形式の URI を設定し \[**保存**\] ボタンをクリックします
+    api://{AppID} の形式でアプリケーションID の URI が生成されるので、App ID の前に **botid-** を記述して以下の形式の URI を設定し \[**保存**\] ボタンをクリックします
 
     ```
-    api://botid-アプリケーションID 
+    api://botid-AppID 
     ```
     **この URI はアプリ マニフェストの設定で使用するのでメモ帳などに貼り付けて保持します。**
 
@@ -205,7 +205,7 @@ Teams とボット アプリケーションとの SSO に必要なAzure Active D
 
     実際の画面は以下のとおりです。
 
-    <img src="images/21Sep_AddAAD_Scope.png" width="500px">
+    <img src="images/21Nov_AddAAD_Scope.png" width="500px">
 
 9. \[状態] トグルボタンが \[**有効**] になっていることを確認し、\[スコープの追加] ボタンをクリックします。
 
@@ -220,7 +220,7 @@ Teams とボット アプリケーションとの SSO に必要なAzure Active D
 
     実際の画面は以下のとおりです。
     
-    <img src="images/21Sep_AddAppInPublicAPI.png" width="600px">
+    <img src="images/21Nov_AddAppInPublicAPI.png.png" width="600px">
 
 11. 画面左のメニューで \[**API のアクセス許可**] をクリックします
 
