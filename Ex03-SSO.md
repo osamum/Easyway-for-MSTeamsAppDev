@@ -306,6 +306,30 @@ Teams アプリの基本的な登録が完了したら、以下の手順で作�
 
 2. 登録されているアプリの一覧が表示されるので、目的のアプリをクリックします
 
+3. アプリの設定画面に遷移するので、画面左のメニューから \[**構成する**\]-\[**アプリの機能** \] を選択します
+
+4. 機能の一覧が表示されるので \[**ボット**] のタイルをクリックします
+
+    <img src="images/21Augst_AddBot.png" width="500px">
+
+5. ボットの設定画面の**ボットを特定する** で \[**別のボット ID に接続**\](英語表記:\[**Enter a bot ID**\]) オプションボタンを選択し、その直下のテキストボックスに Azure Bot の登録の際にメモした **Microsoft App ID を指定し**、\[Save\] ボタンをクリックします
+
+    <img src="images/21Augs_Add_BotSettings.png" width="500px">
+
+6. 保存が完了すると**コマンド**という項目が表示されるのでアイコンの下の **新しいコマンドを追加** リンクをクリックします
+
+    <img src="images/21Augs_Add_CommandToBot.png" width="400px">
+
+8. **ボットコマンドを追加する** ダイアログボックスが表示されるので各項目を以下のように設定します
+
+    |項目|値|
+    | ---- | ---- |
+    |コマンド*|**hello**|
+    |説明(ヘルプ テキスト)*|**Greeting**|
+    |ユーザーがこのコマンドを使用できるようにする範囲を選択してください|**Personal**にのみチェック|
+  
+    \[**追加**\] ボタンをクリックします。
+
 3. 選択したアプリの画面内の左のメニューより \[**Configure**\] - \[**Single sign-on**\] をクリックします
 
 4. **Single sign-on** の設定画面が表示されるので、\[**Application ID URI***\] に Azure Active Directory で設定した Application ID URI を指定し、\[**Save**\] ボタンをクリックします
@@ -327,8 +351,38 @@ Teams アプリの基本的な登録が完了したら、以下の手順で作�
 
 以上でマニフェストへのボットアプリ用 SSO の設定は完了です。 
 
+<br />
+
+## 開発者ポータルからのアプリのテスト実行
+
+この演習で設定したボット アプリを開発者ポータルからアプリをテスト実行して SSO の機能を確認します。
+
+手順は以下のとおりです。
+
+1. [開発者ポータル](https://dev.teams.microsoft.com/) で目的のアプリを選択します
+
+2. 画面上部の \[**Teamsでプレビュー**\](英語表記:\[**Preview in Teams**\]) ボタンをクリックします
+
+3. Web ブラウザーが起動してきて Teams デスクトップアプリを起動して良いか確認されるので、問題なければ \[**開く**\] ボタンをクリックします。デスクトップアプリを使用したくない場合は \[**キャンセル**\] ボタンをクリックし、Web ブラウザーのドキュメント部分の \[**代わりに Web アプリを使用**\] ボタンをクリックします
+
+4. Teams が起動し、アプリの追加ダイアログボックスが表示されるので同ダイアログボックス中の \[**追加**\] ボタンをクリックします
+
+    <img src="images/21Augs_Preview_Bot.png" width="400px">
+
+5. ボットとのチャット画面が表示され、ボットからの "Welcome to TeamsBot. Type anything to get logged in. Type 'logout' to sign-out." とメッセージか送られてくるので 'hello' とメッセージを送ります
+
+    <img src="images/21Nov_SSOBot_FirstMsg.png" width="500px">
 
 
+6. メッセージにユーザーのプロファイル情報と「Would you like to view your token?」と書かれたアクションカードが返るので \[**はい**\] ボタンをクリックし、Token が返されることを確認します。
+
+    <img src="images/21Nov_ResultSSOBotApp.png" width="500px">
+
+    返された Token を使用して Microsoft Graph API を呼び出したり、Azure Active Directory で管理されたページにアクセスすることができます。
+
+    Microsoft Graph API の使い方については、わかりやすいハンズオンを用意していますので、こちらもぜひご利用ください。
+
+    * [**Microsoft Graph API を使用するための簡易チュートリアル**](https://github.com/osamum/Firstway_to_MSTeamsGraphAPI)
 
 
 
