@@ -395,7 +395,7 @@ Teams アプリの基本的な登録が完了したら、以下の手順で作�
 
 <img src="images/21Nov_MaindialogConstructor.png" width="500px">
 
-ウォーターフォール ダイアログの最初の手順では、ユーザーとボットに認証を求めます。これには同クラスの **promptStep** を介してシングル サインオン (SSO) サービスを使用してサインインするようにユーザーに求める新しいプロンプトを作成する [**OAuthPrompt**](https://docs.microsoft.com/en-us/javascript/api/botbuilder-dialogs/oauthprompt?view=botbuilder-ts-latest) を使用します。
+[ウォーターフォール ダイアログ](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-concept-waterfall-dialogs?view=azure-bot-service-4.0#waterfall-dialogs)の最初の手順では、ユーザーとボットに認証を求めます。これには同クラスの **promptStep** を介してシングル サインオン (SSO) サービスを使用してサインインするようにユーザーに求める新しいプロンプトを作成する [**OAuthPrompt**](https://docs.microsoft.com/en-us/javascript/api/botbuilder-dialogs/oauthprompt?view=botbuilder-ts-latest) を使用します。
 
 次の **loginStep** では前のステップで取得したトークンが正しいか確認し、取得できていなければ "Login was not successful please try again." というメッセージを返し、取得できていれば **SimpleGraphClient** メソッドを使用してユーザーの写真などのプロファイル情報を返し、ユーザーに Token を表示するかどうかの \[はい\]\[いいえ\]ボタン付きのメッセージ("Would you like to view your token?") を [**ConfirmPrompt**](https://docs.microsoft.com/ja-jp/javascript/api/botbuilder-dialogs/confirmprompt?view=botbuilder-ts-latest) を使用して送信します。
 
@@ -417,8 +417,8 @@ Visual Studio Code を使用したボット アプリ (Node.js)のデバッグ�
 
 
 
-
 <br />
+
 
 ## 参考
 
@@ -427,6 +427,10 @@ Visual Studio Code を使用したボット アプリ (Node.js)のデバッグ�
 * [**Teamsシングル サインオンを持つボット**](https://docs.microsoft.com/ja-jp/microsoftteams/platform/sbs-bots-with-sso) (※C# のサンプルを動作させるステップ バイ ステップガイド)
 
 * [**Microsoft Teams ボットを使用したシングル サインオン (SSO)**](https://docs.microsoft.com/ja-jp/learn/modules/msteams-sso/6-bots-sso)
+
+<br />
+
+**⇒【 4. [メッセージング拡張](Ex04.md) 】へ**
 
 <br />
 
@@ -461,6 +465,8 @@ Visual Studio Code を使用したボット アプリ (Node.js)のデバッグ�
     * [**ボットの登録**](Ex03.md#%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E7%99%BB%E9%8C%B2)
     * [**App Studio を使用したボットの追加**](Ex03.md#app-studio-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0)
     * [**Microsoft Teams 用 開発者ポータルを使用したボットの追加**](Ex03.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0)
+
+    * [**ボットのシングル サインオン (SSO)**](Ex03-SSO.md)
     
 4. [**メッセージング拡張**](Ex04.md)
     * [**検索機能の実装**](Ex04.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E6%8B%A1%E5%BC%B5---wikipedia-%E6%A4%9C%E7%B4%A2%E6%A9%9F%E8%83%BD%E3%81%AE%E5%AE%9F%E8%A3%85)
