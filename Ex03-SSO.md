@@ -385,6 +385,94 @@ Teams アプリの基本的な登録が完了したら、以下の手順で作�
     * [**Microsoft Graph API を使用するための簡易チュートリアル**](https://github.com/osamum/Firstway_to_MSTeamsGraphAPI)
 
 
+<br />
+
+## Teams SSO ボットの仕組みについて
+
+サンプル SSO ボットのサインインの処理ステップは、Bot Framework の[**ダイアログ**](https://docs.microsoft.com/ja-jp/azure/bot-service/bot-builder-concept-dialog?view=azure-bot-service-4.0)を使用して実装されています。ダイアログは、ユーザーとの長時間の会話を管理するための状態ベースのモデルを提供するものです。
+
+この演習で使用したサンプル プロジェクトでは [/dialogs/mainDialog.js](https://github.com/OfficeDev/Microsoft-Teams-Samples/blob/main/samples/bot-conversation-sso-quickstart/js/dialogs/mainDialog.js) で定義された MainDialog クラスのコンストラクター内に、サインインの際に必要となる一連の処理の流れがダイアログセットとして定義されています。
+
+<img src="images/21Nov_MaindialogConstructor.png" width="500px">
+
+ウォーターフォール ダイアログの最初の手順では、ユーザーとボットに認証を求めます。これには同クラスの **promptStep** を介してシングル サインオン (SSO) サービスを使用してサインインするようにユーザーに求める新しいプロンプトを作成する [**OAuthPrompt**](https://docs.microsoft.com/en-us/javascript/api/botbuilder-dialogs/oauthprompt?view=botbuilder-ts-latest) を使用します。
+
+次の **loginStep** では前のステップで取得したトークンが正しいか確認し、取得できていなければ "Login was not successful please try again." というメッセージを返し、取得できていれば **SimpleGraphClient** メソッドを使用してユーザーの写真などのプロファイル情報を返し、ユーザーに Token を表示するかどうかの \[はい\]\[いいえ\]ボタン付きのメッセージ("Would you like to view your token?") を [**ConfirmPrompt**](https://docs.microsoft.com/ja-jp/javascript/api/botbuilder-dialogs/confirmprompt?view=botbuilder-ts-latest) を使用して送信します。
+
+**ensureOAuth** でユーザーからの返答を確認し、"はい" であればトークンを再度取得します。
+
+**displayToken** ではトークンが取得できいするかどうかを確認し、取得できていればトークンを表示します。
+
+その他、プロジェクトを構成する SsoOAuthHelper.js、MsGraphHelper.js、ssoOauthPrompt.js といった SSO 用のモジュールの説明については、以下のドキュメントの **ボットにヘルパーを追加する** 以降をご確認ください。 
+
+(※)ここで紹介されているプロジェクトのコード自体は、この演習で使用しているものと異なりますが、モジュールの構成と役割は同じです。
+
+* [**演習 - Microsoft Teams ボットを使用したシングル サインオン (SSO)**](https://docs.microsoft.com/ja-jp/learn/modules/msteams-sso/7-exercise-bots-sso)
+
+また、サンプル アプリをデバッグ実行することでコードの実際の動作を確認することができます。
+
+Visual Studio Code を使用したボット アプリ (Node.js)のデバッグ方法については以下を参照してください。
+
+* [**Visual Studio Code での Node.js アプリケーションのデバッグ**](opt/JS_vscode-dbg.md#visual-studio-code-%E3%81%A7%E3%81%AE-nodejs-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0)
+
+
+
+
+<br />
+
+## 参考
+
+* [**ボットのシングル サインオン (SSO) のサポート**](https://docs.microsoft.com/ja-jp/microsoftteams/platform/bots/how-to/authentication/auth-aad-sso-bots)
+
+* [**Teamsシングル サインオンを持つボット**](https://docs.microsoft.com/ja-jp/microsoftteams/platform/sbs-bots-with-sso) (※C# のサンプルを動作させるステップ バイ ステップガイド)
+
+* [**Microsoft Teams ボットを使用したシングル サインオン (SSO)**](https://docs.microsoft.com/ja-jp/learn/modules/msteams-sso/6-bots-sso)
+
+<br />
+
+
+## 目次
+0. [**Microsoft Teams アプリケーション開発について**](Intro.md)
+
+1. [**Microsoft Teams アプリケーションの新規作成**](Ex01.md)
+    * [**App Studio を使用したマニフェストファイルの作成**](Ex01.md#app-studio-を使用した-teams-アプリケーションの登録)
+    * [**Microsoft Teams 用 開発者ポータルを使用した Teams アプリケーションの登録**](Ex01.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E3%81%AE%E4%BD%BF%E7%94%A8)
+    
+2. [**タブ アプリケーション**](Ex02.md)
+    * [**パーソナル タブ**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E9%9D%99%E7%9A%84-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)
+        * [**App Studio を使用した方法**](Ex02.md#app-studio-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)
+        * [**Microsoft Teams 用 開発者ポータルを使用した方法**](Ex02.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)
+
+
+    * [**チーム タブ**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-2--%E3%83%81%E3%83%BC%E3%83%A0-%E6%A7%8B%E6%88%90%E5%8F%AF%E8%83%BD-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)
+        * [**App Studio を使用した方法**](Ex02.md#app-studio-%E3%81%A7%E3%81%AE%E3%83%81%E3%83%BC%E3%83%A0-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)
+        * [**Microsoft Teams 用 開発者ポータルを使用した方法**](Ex02.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)
+
+    * [**タブ : タスクモジュールの表示**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-3-%E3%82%BF%E3%83%96%E3%81%A7%E3%81%AE%E3%82%BF%E3%82%B9%E3%82%AF-%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E8%A1%A8%E7%A4%BA)
+
+        * [**外部の HTML フォームをタスクモジュールとしてタブに追加**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-3-1--%E5%A4%96%E9%83%A8%E3%81%AE-html-%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%92%E3%82%BF%E3%82%B9%E3%82%AF%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%A8%E3%81%97%E3%81%A6%E3%82%BF%E3%83%96%E3%81%AB%E8%BF%BD%E5%8A%A0)
+
+        * [**アダプティブ カードをタスクモジュールとしてタブに追加**](Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-3-2--actibity-card-%E3%82%92%E3%82%BF%E3%82%B9%E3%82%AF%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%A8%E3%81%97%E3%81%A6%E3%82%BF%E3%83%96%E3%81%AB%E8%BF%BD%E5%8A%A0)
+    
+    * [**タブのシングルサインオン(SSO)**](Ex02-SSO.md)
+
+    
+3. [**ボット**](Ex03.md)
+    * [**ボットの登録**](Ex03.md#%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E7%99%BB%E9%8C%B2)
+    * [**App Studio を使用したボットの追加**](Ex03.md#app-studio-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0)
+    * [**Microsoft Teams 用 開発者ポータルを使用したボットの追加**](Ex03.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0)
+    
+4. [**メッセージング拡張**](Ex04.md)
+    * [**検索機能の実装**](Ex04.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E6%8B%A1%E5%BC%B5---wikipedia-%E6%A4%9C%E7%B4%A2%E6%A9%9F%E8%83%BD%E3%81%AE%E5%AE%9F%E8%A3%85)
+    * [**操作機能の実装**](Ex04.md#%E3%82%BF%E3%82%B9%E3%82%AF-2--%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E6%8B%A1%E5%BC%B5---%E6%93%8D%E4%BD%9C%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AB%E3%82%88%E3%82%8B%E5%A4%96%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E9%80%A3%E6%90%BA)
+    
+5. [**コネクタ**](Ex06.md)
+    * [**受信 Webhook を利用したチャネルへの通知**](Ex06.md#%E3%82%BF%E3%82%B9%E3%82%AF-1--incomming-webhook-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%B8%E3%81%AE%E9%80%9A%E7%9F%A5)
+    * [**送信Webhook を利用した外部サービスの呼び出し**](Ex06.md#%E3%82%BF%E3%82%B9%E3%82%AF-2--%E9%80%81%E4%BF%A1outgoing-webhook-%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E5%A4%96%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97)
+
+
+
+
 
 
     
