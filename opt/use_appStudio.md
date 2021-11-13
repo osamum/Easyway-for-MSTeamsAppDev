@@ -334,3 +334,53 @@ App Studio を使用して ボットを Teams アプリとして登録する具�
 <br />
 
 **⇒【 [ボットの登録](..Ex03.md#%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E7%99%BB%E9%8C%B2) 】へ**
+
+<br />
+
+# App Studio を使用した SSO タブの追加
+
+この演習では [AppStudio](https://docs.microsoft.com/ja-jp/microsoftteams/platform/concepts/build-and-test/app-studio-overview) を使用して SSO の機能を持ったタブアプリを Teams に追加します。
+
+具体的な手順は以下のとおりです。
+
+1. Microsoft Teams から AppStudio を起動します
+
+2. アプリの一覧が表示されるので、この演習で作成したアプリのタイルをクリックして設定画面を開きます
+
+3. アプリの設定画面左のメニュー項目 **Complete these steps** の下にある \[**③ Finish**\] - \[**Domain and permissions**\] をクリックします
+
+    <img src="../images/21SepDomain&Permission.png" width="300px">
+
+4. 表示された画面で、\[**Domains from your tabs**\] 、 \[**AAD App ID**] 、\[**Single-Sign-On**\] 、それぞれの項目を以下のように設定します
+
+
+    |項目|設定値|
+    |---|---|
+    |Domains from your tabs|ngrok が生成したドメイン名|
+    | AAD App ID | Azure Active Directory に登録した際にメモした**アプリケーション (クライアント) ID**|
+    | Single-Sign-On | Azure Active Directory に登録する際、**\[API の公開\]で指定した URI** (api://ngrok が生成したドメイン名/AppIDのGUID)|
+
+    実際の画面は以下のとおりです。
+
+    <img src="../images/Validdomain.png" width="500px">
+
+    <!--
+    <img src="images/21Sep_Add_AADSettingsManifest.png" width="400px">
+    -->
+
+5. アプリの設定画面左のメニュー項目 **Complete these steps** の下にある \[**③ Finish**\] - \[**Teat and distibute**\] をクリックし、遷移した画面内の \[**Install**\] ボタンをクリックしてアプリをインストールします
+
+
+6. タブ アプリがインストールされ、画面が表示されたらタブ内の \[**ログオン**\]ボタンをクリックします
+
+    アプリが正しく Azure Active Directory に登録されており、コードが正しく動作していれば、以下のように JSON Web Token (jwt) 形式のトークンが表示されます。
+
+    <img src="../images/21Sep_Result_SSO_tab.png" width="500px">
+
+    なお、ここで取得したトークンは [**jwt.ms**](https://jwt.ms/) でデコードして内容を確認することができます。
+
+ここまでの手順でクライアント側のアプリケーション コードの作成と、Azure Active Directory の設定は完了です。
+
+<br />
+
+**⇒【 3. [ボット](Ex03.md) 】へ**

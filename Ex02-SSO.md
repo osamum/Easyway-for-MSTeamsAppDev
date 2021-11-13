@@ -398,41 +398,44 @@ npm install -g express-generator
 
 ### アプリ マニフェストへの設定追加
 
-Azure Active Dirctory に設定した情報を Teams のアプリ マニフェストに追加します。なお、
-
-この演習では [AppStudio](https://docs.microsoft.com/ja-jp/microsoftteams/platform/concepts/build-and-test/app-studio-overview) を使用して行う手順を紹介します。
+Azure Active Dirctory に設定した情報を Teams のアプリ マニフェストに追加します。なお、この演習では Microsoft Teams 用 開発者ポータルを使用します。
 
 具体的な手順は以下のとおりです。
 
-1. Microsoft Teams から AppStudio を起動します
+1. [開発者ポータル](https://dev.teams.microsoft.com/) を開きます
 
-2. アプリの一覧が表示されるので、この演習で作成したアプリのタイルをクリックして設定画面を開きます
+2. 画面左のメニュー \[**Apps**\] をクリックすると登録されているアプリの一覧が表示されるので目的のアプリ(※この演習では **ssoTabApp**)をクリックします
 
-3. アプリの設定画面左のメニュー項目 **Complete these steps** の下にある \[**③ Finish**\] - \[**Domain and permissions**\] をクリックします
+3. アプリの設定画面に遷移するので、画面左のメニューより \[**Configure**\]-\[**Domains**\]をクリックし、右ペインに表示されたアイコンの下にある \[**Create your first domain**\] ボタンをクリックします
 
-    <img src="images/21SepDomain&Permission.png" width="300px">
+    <img src="images/21Nov_TabSSO_CreateFirstDomain.png" width="600px">
 
-4. 表示された画面で、\[**Domains from your tabs**\] 、 \[**AAD App ID**] 、\[**Single-Sign-On**\] 、それぞれの項目を以下のように設定します
+4. \[**Add domain**\] ダイアログボックスが表示されるので以下
+ドメイン名を設定します
 
+    ```
+    *.ngrok.io
+    ```
 
-    |項目|設定値|
-    |---|---|
-    |Domains from your tabs|ngrok が生成したドメイン名|
-    | AAD App ID | Azure Active Directory に登録した際にメモした**アプリケーション (クライアント) ID**|
-    | Single-Sign-On | Azure Active Directory に登録する際、**\[API の公開\]で指定した URI** (api://ngrok が生成したドメイン名/AppIDのGUID)|
+    <img src="images/21Nov_TabSSO_AddDomain.png" width="400px">
 
-    実際の画面は以下のとおりです。
+    これは開発中に ngrok のドメイン名が変わってもこの設定を変更せずにするためです。
 
-    <img src="images/Validdomain.png" width="500px">
+5. 画面左の \[**Single-sign-on**\] メニューをクリックし、右ペインで "Your app needs an application (client) ID." と書いてあるところの \[**Update**\] ボタンをクリックします
 
-    <!--
-    <img src="images/21Sep_Add_AADSettingsManifest.png" width="400px">
-    -->
+    <img src="images/21Nov_TabSSO_SSO_01.png" width="600px">
 
-5. アプリの設定画面左のメニュー項目 **Complete these steps** の下にある \[**③ Finish**\] - \[**Teat and distibute**\] をクリックし、遷移した画面内の \[**Install**\] ボタンをクリックしてアプリをインストールします
+6. 画面がアプリの \[**Basic information**\] に遷移するので、その画面内の \[**Application (client) ID\***\] に Azure Active Directory に登録した際にメモした**アプリケーション (クライアント) ID** を設定し\[**Save**\] ボタンをクリックします
 
+    <img src="images/21Nov_TabSSO_SSO_appID.png" width="600px">
 
-6. タブ アプリがインストールされ、画面が表示されたらタブ内の \[**ログオン**\]ボタンをクリックします
+7. 再度、画面左の \[**Single-sign-on**\] メニューをクリックし、右ペインの \[**Application ID URI\***\] にAzure Active Directory に登録する際、**\[API の公開\]で指定した URI** (api://ngrok が生成したドメイン名/AppIDのGUID) を指定して \[**Save**\] ボタンをクリックします
+
+    <img src="images/21Nov_TabSSO_SSO_02.png" width="600px">
+
+7. 上部にある \[**Teams でプレビュー**(英語表記 : Preview in Teams)\] ボタンをクリックしてタブアプリをテストインストールします。
+
+8. タブ アプリの画面が表示されたらタブ内の \[**ログオン**\]ボタンをクリックします
 
     アプリが正しく Azure Active Directory に登録されており、コードが正しく動作していれば、以下のように JSON Web Token (jwt) 形式のトークンが表示されます。
 
