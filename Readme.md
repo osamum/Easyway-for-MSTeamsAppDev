@@ -32,7 +32,7 @@
 * **Microsoft Office 365 Business Premium 以上の[ライセンス](https://products.office.com/ja-JP/compare-all-microsoft-office-products-b?tab=2)**
 
     ライセンスを持っていない開発者は [Office 365 開発者プログラム](https://developer.microsoft.com/ja-JP/office/dev-program
-)に参加して開発者用の無料の Office 365 のサブスクリプションを入手することもできます。このサブスクリプションでは [Office 365 Enterprise E3 Developer](https://docs.microsoft.com/ja-jp/office/developer-program/office-365-developer-program-get-started) が 90 日間無償で使用することができます。このライセンスを開発に積極的に使用している場合は、90 日ごとにサブスクリプションが自動的に更新されます。
+)に参加して開発者用の無料の Office 365 のサブスクリプションを入手することもできます。このサブスクリプションでは [Office 365 Enterprise E5 Developer](https://docs.microsoft.com/ja-jp/office/developer-program/office-365-developer-program-get-started) が 90 日間無償で使用することができます。このライセンスを開発に積極的に使用している場合は、90 日ごとにサブスクリプションが自動的に更新されます。
 
     詳しくは以下のドキュメントをご参照ください。
 
@@ -42,7 +42,7 @@
 
     Microsoft Teams 管理センターにて、開発したアプリケーションがサイドローディングできるように許可を行ってください。
     
-    具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[Teams のアプリ\] - \[アプリの管理\] の画面内にある \[**組織全体のアプリ設定**\] ボタンをクリックし、表示されたブレード内の 「カスタム アプリとの相互作用を許可する」をオンにします。
+    具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[**Teams のアプリ**\] - \[**アプリの管理**\] の画面内にある \[**組織全体のアプリ設定**\] ボタンをクリックし、表示されたブレード内の 「**カスタム アプリとの相互作用を許可する**」をオンにします。
 
     <img src="images/21june_allowCustomApp.png" width="300">
 

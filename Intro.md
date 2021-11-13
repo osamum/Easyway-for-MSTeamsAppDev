@@ -1,4 +1,4 @@
-# 序 : Microsoft Teams アプリケーション開発について
+# 序 : Microsoft Teams アプリ開発について
 開発方法について紹介する前に簡単に Microsoft Teams について紹介します。
 
 ## Microsoft Teams とは
