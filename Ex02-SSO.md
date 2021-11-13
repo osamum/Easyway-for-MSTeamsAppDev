@@ -398,9 +398,11 @@ npm install -g express-generator
 
 ### アプリ マニフェストへの設定追加
 
-Azure Active Dirctory に設定した情報を Teams のアプリ マニフェストに追加します。なお、この演習では Microsoft Teams 用 開発者ポータルを使用します。
+Azure Active Dirctory に設定した情報を Teams のアプリ マニフェストに追加します。この手順は App Studio の後継である Microsoft Teams 用 開発者ポータルを使用します。
 
-具体的な手順は以下のとおりです。
+なお、App Studio の利用は 2021 年 11 月から非推奨となっています。もしなんらかの理由で App Studio を利用して作業を行う必要がある場合は[この手順](opt/use_appStudio.md#app-studio-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F-sso-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)を参照してください。
+
+SSO 機能を持ったタブ アプリを動作させるためのマニフェスト設定手順は以下のとおりです。
 
 1. [開発者ポータル](https://dev.teams.microsoft.com/) を開きます
 
