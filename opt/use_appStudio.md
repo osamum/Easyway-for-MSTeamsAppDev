@@ -101,19 +101,19 @@ App Studio でアプリの登録を行うには以下の手順を実行します
 
     App details 実際の設定画面は以下の通りです。
 
-    <img src="images/AppDetailForm.png" width="300">
+    <img src="../images/AppDetailForm.png" width="300">
 
 5. App Studio 画面左上の \[Home] メニューをクリックすると指定した値が自動で保存されます。
 
-    <img src="images/AppStudio_Home.png" width="300">
+    <img src="../images/AppStudio_Home.png" width="300">
 
 以上で App Studio を使用したアプリの新規登録は完了です。
 
 App Studio の Recently created apps リストに登録したアプリケーション **My first app** のタイルがあることを確認してください。
 
-<img src="images/MyFirstApp_Tail.png" width="300">
+<img src="../images/MyFirstApp_Tail.png" width="300">
 
-[以降の手順](Ex02.md)でアプリの実際の機能 (**Capability**) を登録していきます。
+[以降の手順](../Ex02.md)でアプリの実際の機能 (**Capability**) を登録していきます。
 
 <br>
 
@@ -126,7 +126,7 @@ Teams のアプリである App Studio を使用してパーソナル タブを�
 
 1. Microsoft Teams で App Studio を起動します。
 
-2. アプリの一覧から [演習 1](Ex01.md) で登録したアプリ **My first app** のタイルをクリックして設定画面を開きます。
+2. アプリの一覧から [演習 1](../Ex01.md) で登録したアプリ **My first app** のタイルをクリックして設定画面を開きます。
 
     <img src="../images/MyFirstApp_Tail.png" width="300">    
 
@@ -170,7 +170,7 @@ Teams 内にタブとして作成した Web ページが表示され、以下の
 
 1. Microsoft Teams で App Studio を起動します。
 
-5. アプリの一覧から [演習 1](Ex01.md) で登録したアプリ **My first app** のタイルをクリックして設定画面を開きます。
+5. アプリの一覧から [演習 1](../Ex01.md) で登録したアプリ **My first app** のタイルをクリックして設定画面を開きます。
 
 3. App Studio の左側のツリーメニュー \[2 Capabilities] - \[Tabs] をクリックします。
 
