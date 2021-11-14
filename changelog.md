@@ -8,7 +8,7 @@
 
 - App Studio が 2020 年 11 月より非推奨になったため、各演習の手順より App Studio の箇所を削除し、開発者ポータルを使用した手順を追加
 
-    削除された App Studio の手順は必要になった場合に備えて[別ファイル](opt/JS_vscode-dbg.md)にまとめて移動
+    削除された App Studio の手順は必要になった場合に備えて[別ファイル](opt/use_appStudio.md)にまとめて移動
 
  - Azure Bot インスタンスのデプロイ時に生成され、同じリソースグループ内の KeyVault に格納されているシークレットの確認手順を[別ファイル](opt/bot_secret_KeyValut.md)に移動
 
