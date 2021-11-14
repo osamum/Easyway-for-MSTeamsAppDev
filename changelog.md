@@ -1,5 +1,19 @@
 # Change log
 
+## November 15 2021
+
+- GotHub の OfficeDv/Microsoft-Teams-Samples で公開されている Teams との[シングルサインオン (SSO)の機能をもったボットのサンプル アプリ(JS)](https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-conversation-sso-quickstart/js)を動作させるまでの[ハンズオン資料](Ex03-SSO.md)を追加
+
+- [開発者ポータルを使用したボットの登録手順](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/update2021November/Ex03.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0) の内容を Azure を使用しなくとも良い内容に変更
+
+- App Studio が 2020 年 11 月より非推奨になったため、各演習の手順より App Studio の箇所を削除し、開発者ポータルを使用した手順を追加
+
+    削除された App Studio の手順は必要になった場合に備えて[別ファイル](opt/JS_vscode-dbg.md)にまとめて移動
+
+ - Azure Bot インスタンスのデプロイ時に生成され、同じリソースグループ内の KeyVault に格納されているシークレットの確認手順を[別ファイル](opt/bot_secret_KeyValut.md)に移動
+
+ - Visual Studio Code Teams Toolkit 拡張のバージョンアップに合わせた、[演習 4 : メッセージング拡張](Ex04.md) の手順と画面ショットの若干の変更
+
 ## September 23 2021
 
 - **タブのシングルサインオン (SSO)** をシンプルな方法で実装する[ハンズオン資料](Ex02-SSO.md)を追加

@@ -7,14 +7,18 @@
 
 - [開発者ポータルを使用したボットの登録手順](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/update2021November/Ex03.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0) の内容を Azure を使用しなくとも良い内容に変更
 
+- App Studio が 2020 年 11 月より非推奨になったため、各演習の手順より App Studio の箇所を削除し、開発者ポータルを使用した手順を追加
 
-- Teams アプリ開発関連の以下のデバッグ方法について記述
+    削除された App Studio の手順は必要になった場合に備えて[別ファイル](opt/JS_vscode-dbg.md)にまとめて移動
 
-    * [**Teams タブ アプリとしてロードされた Web ページのデバッグ**](opt/JS_vscode-dbg.md#teams-%E3%82%BF%E3%83%96-%E3%82%A2%E3%83%97%E3%83%AA%E3%81%A8%E3%81%97%E3%81%A6%E3%83%AD%E3%83%BC%E3%83%89%E3%81%95%E3%82%8C%E3%81%9F-web-%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0)
+ - Azure Bot インスタンスのデプロイ時に生成され、同じリソースグループ内の KeyVault に格納されているシークレットの確認手順を[別ファイル](opt/bot_secret_KeyValut.md)に移動
 
-    * [**Visual Studio Code での Node.js アプリケーションのデバッグ**](opt/JS_vscode-dbg.md#visual-studio-code-%E3%81%A7%E3%81%AE-nodejs-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0)
+ - Visual Studio Code Teams Toolkit 拡張のバージョンアップに合わせた、[演習 4 : メッセージング拡張](Ex04.md) の手順と画面ショットの若干の変更
+
 
 これまでの更新内容は[改訂履歴](changelog.md)を参照してください。
+
+<br >
 
 ## 概要
 このチュートリアルは、これから Microsoft Teams 向けのアプリケーションの開発を行う初学者のための簡易的なものであり、実際の開発に取り掛かるまでの学習期間の短縮を目的としています。
