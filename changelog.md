@@ -2,7 +2,7 @@
 
 ## November 15 2021
 
-- GotHub の OfficeDv/Microsoft-Teams-Samples で公開されている Teams との[シングルサインオン (SSO)の機能をもったボットのサンプル アプリ(JS)](https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-conversation-sso-quickstart/js)を動作させるまでの[ハンズオン資料](Ex03-SSO.md)を追加
+- GotHub の [OfficeDv/Microsoft-Teams-Samples](https://github.com/OfficeDev/Microsoft-Teams-Samples) で公開されている Teams との[シングルサインオン (SSO)の機能をもったボットのサンプル アプリ(JS)](https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-conversation-sso-quickstart/js)を動作させるまでの[ハンズオン資料](Ex03-SSO.md)を追加
 
 - [開発者ポータルを使用したボットの登録手順](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/update2021November/Ex03.md#microsoft-teams-%E7%94%A8-%E9%96%8B%E7%99%BA%E8%80%85%E3%83%9D%E3%83%BC%E3%82%BF%E3%83%AB%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9C%E3%83%83%E3%83%88%E3%81%AE%E8%BF%BD%E5%8A%A0) の内容を Azure を使用しなくとも良い内容に変更
 
