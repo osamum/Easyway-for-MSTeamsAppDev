@@ -266,6 +266,9 @@ App Studio を使用してタブ アプリを Teams 会議にインストール�
 
 <img src="../images/22Jan_addedTab_meeting.png" width="500px">
 
+
+**⇒【 [Teams 会議 タブとして追加](../Ex02.md##%E4%BC%9A%E8%AD%B0-%E3%82%BF%E3%83%96%E3%82%92%E8%BF%BD%E5%8A%A0) 】へ**
+
 \<参考>
 
 * [**Teams 会議で使用するアプリの有効化**](https://docs.microsoft.com/ja-jp/microsoftteams/platform/apps-in-teams-meetings/enable-and-configure-your-app-for-teams-meetings)
