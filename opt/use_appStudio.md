@@ -228,6 +228,50 @@ Teams 内にタブとして作成した Web ページが表示され、以下の
 
 <br />
 
+# 会議へのタブアプリのテストインストール
+
+App Studio を使用してタブ アプリを Teams 会議にインストールします。
+
+これには[チーム (構成可能) タブ](https://github.com/osamum/Easyway-for-MSTeamsAppDev/blob/master/Ex02.md#%E3%82%BF%E3%82%B9%E3%82%AF-2--%E3%83%81%E3%83%BC%E3%83%A0-%E6%A7%8B%E6%88%90%E5%8F%AF%E8%83%BD-%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0) を使用します。
+
+具体的な手順は以下のとおりです。
+
+1. Microsoft Teams で App Studio を起動し、アプリの一覧から目的のチームタブ アプリのタイルをクリックします
+
+2. 遷移した画面左のメニューから \[**Capabilities**\]-\[**Tabs**\] をクリックします
+
+    <img src="../images/Capabilities-Tabs.png" width="300px" >
+
+3. 遷移した画面で、チーム タブの設定画面の URL が表示されているエディットボックス横の \[**・・・**\] をクリックし、表示されたドロップダウンリストから \[**Edit**\] を選択します
+
+    <img src="../images/22Jan_editTeamTabUrl.png" width="400px" >
+
+4. チームタブの設定画面が表示されるので、項目 \[***Scope**\] の **Meeting**,**Side panel**,**Share to stage (Side panel required)**,**Details**,**Chat** にチェックをつけ \[**Save**\] ボタンをクリックして保存します
+
+    <img src="../images/22Jan_setScopeMeeting.png" width="400px" >
+
+5. App Studio の左側のツリーメニュー \[**3 Finish**\] - \[**Test ans distribute**\] をクリックします。
+
+6. **Test and Distribute** の画面が表示されるので同画面の \[**Install**\] ボタンをクリックします。
+
+7. アプリのインストールダイアログボックスが表示されるので、\[**チームに追加**\] ボタン右横の **▼** マークをクリックし、表示されたドロップダウンリストから\[**会議に追加する**\] をクリックします
+
+    <img src="../images/21Jan_installTab_meeting.png" width="400px">
+
+8. 会議の検索画面が表示されるので、会議のタイトルに含まれるキーワードで目的の会議を検索し、選択して \[**タブを設定**\]ボタンをクリックします
+
+    <img src="../images/21Jan_findMeeting_tabInstall.png" width="500px">
+
+以上の手順でタブ アプリを Teams 会議に追加することができます。
+
+<img src="../images/22Jan_addedTab_meeting.png" width="500px">
+
+\<参考>
+
+* [**Teams 会議で使用するアプリの有効化**](https://docs.microsoft.com/ja-jp/microsoftteams/platform/apps-in-teams-meetings/enable-and-configure-your-app-for-teams-meetings)
+
+<br />
+
 # App Studio を使用したボットの追加
 
 App Studio を使用して ボットを Teams アプリとして登録する具体的な手順は以下のとおりです。
