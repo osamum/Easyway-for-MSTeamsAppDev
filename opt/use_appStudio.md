@@ -244,11 +244,11 @@ App Studio を使用してタブ アプリを Teams 会議にインストール�
 
 3. 遷移した画面で、チーム タブの設定画面の URL が表示されているエディットボックス横の \[**・・・**\] をクリックし、表示されたドロップダウンリストから \[**Edit**\] を選択します
 
-    <img src="../images/22Jan_editTeamTabUrl.png" width="400px" >
+    <img src="../images/22Jan_editTeamTabUrl.png" width="500px" >
 
 4. チームタブの設定画面が表示されるので、項目 \[***Scope**\] の **Meeting**,**Side panel**,**Share to stage (Side panel required)**,**Details**,**Chat** にチェックをつけ \[**Save**\] ボタンをクリックして保存します
 
-    <img src="../images/22Jan_setScopeMeeting.png" width="400px" >
+    <img src="../images/22Jan_setScopeMeeting.png" width="500px" >
 
 5. App Studio の左側のツリーメニュー \[**3 Finish**\] - \[**Test ans distribute**\] をクリックします。
 
@@ -256,7 +256,7 @@ App Studio を使用してタブ アプリを Teams 会議にインストール�
 
 7. アプリのインストールダイアログボックスが表示されるので、\[**チームに追加**\] ボタン右横の **▼** マークをクリックし、表示されたドロップダウンリストから\[**会議に追加する**\] をクリックします
 
-    <img src="../images/21Jan_installTab_meeting.png" width="400px">
+    <img src="../images/21Jan_installTab_meeting.png" width="500px">
 
 8. 会議の検索画面が表示されるので、会議のタイトルに含まれるキーワードで目的の会議を検索し、選択して \[**タブを設定**\]ボタンをクリックします
 
