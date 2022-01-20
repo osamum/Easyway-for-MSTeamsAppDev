@@ -50,9 +50,9 @@
 
     Microsoft Teams 管理センターにて、開発したアプリケーションがサイドローディングできるように許可を行ってください。
     
-    具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[**Teams のアプリ**\] - \[**アプリの管理**\] の画面内にある \[**組織全体のアプリ設定**\] ボタンをクリックし、表示されたブレード内の 「**カスタム アプリとの相互作用を許可する**」をオンにします。
+    具体的には [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)のメニュー\[**Teams のアプリ**\] - \[**アプリの管理**\] の画面内にある \[**組織全体のアプリ設定**\] ボタンをクリックし、表示されたブレード内の 「**カスタム アプリとの対話**」をオンにします。
 
-    <img src="images/21june_allowCustomApp.png" width="300">
+    <img src="images/22Jan_allowCustomApp.png" width="300">
 
 
 * **[Visual Studio 2018 以上のエディション](https://visualstudio.microsoft.com/ja/vs/)、もしくは [Visual Studio Code](https://code.visualstudio.com/Download)**
