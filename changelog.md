@@ -1,5 +1,17 @@
 # Change log
 
+## January 24 2022
+
+- [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/) の \[組織全体のアプリ設定\] 画面のメニューの表記の変更に伴い、メニュー名と画面ショットを変更 
+
+- [Teams 会議にタブ アプリを追加する](Ex02.md#%E4%BC%9A%E8%AD%B0-%E3%82%BF%E3%83%96%E3%81%A8%E3%81%97%E3%81%A6%E8%BF%BD%E5%8A%A0)演習を追加
+
+    - 現在、[開発者ポータル](https://dev.teams.microsoft.com/)のタブアプリの設定画面には会議にタブ アプリをインストールするのに必要となるアプリ マニフェストの設定を行う UI が用意されていないので [App Studio を使用した方法](opt/use_appStudio.md#app-studio-%E3%81%A7%E3%81%AE%E4%BC%9A%E8%AD%B0%E3%82%BF%E3%83%96%E3%81%AE%E8%BF%BD%E5%8A%A0)も追加
+
+- Visual Studio Code の Teams Toolkit 拡張のバージョンアップに伴い、ツールキットが生成するプロジェクトの構成とファイル名が変更になったため[メッセージング拡張 - 操作(アクション)コマンドによる外部サービスの連携](Ex04.md#%E3%82%BF%E3%82%B9%E3%82%AF-2--%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E6%8B%A1%E5%BC%B5---%E6%93%8D%E4%BD%9C%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AB%E3%82%88%E3%82%8B%E5%A4%96%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E9%80%A3%E6%90%BA) の表記を変更
+
+- Azure Logic Apps のワークフロー作成時の UI 変更に伴い、メッセージング拡張操作(アクション)コマンドの作成演習内の [Logic Apps 部分の画面ショットと手順](Ex04.md#azure-logic-apps%E7%B7%A8)を変更 
+
 ## November 15 2021
 
 - GotHub の [OfficeDv/Microsoft-Teams-Samples](https://github.com/OfficeDev/Microsoft-Teams-Samples) で公開されている Teams との[シングルサインオン (SSO)の機能をもったボットのサンプル アプリ(JS)](https://github.com/OfficeDev/Microsoft-Teams-Samples/tree/main/samples/bot-conversation-sso-quickstart/js)を動作させるまでの[ハンズオン資料](Ex03-SSO.md)を追加
