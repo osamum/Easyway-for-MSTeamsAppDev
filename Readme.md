@@ -1,8 +1,24 @@
 # Microsoft Teams 開発者向け簡易チュートリアル
 
-2022 年 1 月 24 日版
+## 【重要】
+
+2023 年 09 月 05 日
+
+Microsoft Teams の開発者向けドキュメントの内容が充実したためこのハンズオン資料はリタイアとなり、更新を停止しました。
+
+今後は以下の公式ドキュメントをご参照くださいませ。
+
+* [**Microsoft Teams 開発者向けドキュメント**](https://learn.microsoft.com/ja-jp/microsoftteams/platform/mstdd-landing)
+
+* [**Microsoft Teams Blog**](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/bg-p/MicrosoftTeamsBlog)
+
+長らくのご利用、誠にありがとうございました。
+
+<br>
 
 ## 更新内容
+
+2022 年 01 月 24 日
 
 - [Microsoft Teams 管理センター](https://admin.teams.microsoft.com/) の \[組織全体のアプリ設定\] 画面のメニューの表記の変更に伴い、メニュー名と画面ショットを変更 
 
@@ -18,17 +34,6 @@
 
 <br >
 
-## 【重要】
-
-現在(2022 年 1 月)、[開発者ポータル](https://dev.teams.microsoft.com/)から Teams アプリをテスト インストールしようとすると、以下のエラーメッセージが表示されインストールできない場合があります。
-
-「追加するアプリがこの組織に存在しないか、アクセスできる権限がありません。」
-
-上記のエラーは本来、異なるテナントの Teams にアプリをインストールする場合や、[Microsoft Teams 管理センター](https://admin.teams.microsoft.com/)でカスタム アプリとの対話が有効になっていない場合に発生しますが、現状、これらが正しく設定されていても同エラーが発生する場合があるようです。
-
-この場合は開発者ポータルではなく、[**App Studio**](opt/use_appStudio.md)でテスト インストールを行うか、アプリパッケージをダウンロードし、手動でインストールを行ってみてください。
-
-<br />
 
 ## 概要
 このチュートリアルは、これから Microsoft Teams 向けのアプリケーションの開発を行う初学者のための簡易的なものであり、実際の開発に取り掛かるまでの学習期間の短縮を目的としています。
